@@ -1,0 +1,44 @@
+Reading int format
+length: 128
+min: 2
+max: 98
+range: 96
+max_height: 33
+units_per_height: 2.91
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+ 98 |                                                                                       X                                        
+ 95 |                       X    X             X                                 X          X                                        
+ 92 |                       X    X            XX      X     X                    X          X         X                              
+ 89 |     X                 X    X            XX   X  X     X                  X X          X  X    X X                            X 
+ 86 |     X                 X    X           XXX   X  X    XX                  X X          X  X    X X                            X 
+ 83 |  X  X       X  X      X    X      X    XXX   X  X    XX                  X X          X  X XX X X X      X        X          X 
+ 80 |  X  X       X  X      X    X      X    XXX   X  X    XX            X     X X          X  X XX X X X      X        X          X 
+ 77 |  X  X  X    X  XX     X    X    X X    XXX   X XX    XX            X     X XX         X  X XX X X X     XX     X  X          X 
+ 74 |  X  X  X    X  XX     X    X    X X    XXX  XX XXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X          X 
+ 71 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 68 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 66 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X        X 
+ 63 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X X      X 
+ 60 |  X  XXXX X  X  XX     X    XX   XXX    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 57 |  X  XXXX X  X  XX     X    XX  XXXX    XXX  XXXXXX XXXX  X X      XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 54 |  X  XXXX X  X  XX     X    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 51 |  X  XXXX X  X XXX    XX    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XXXX X   X  X 
+ 48 |  X  XXXX X  X XXX    XX    XXX XXXX    XXX XXXXXXX XXXX  X X   X  XX  XXXX XX         XXXX XX X X X X   XX    XX XXXX X   X XX 
+ 45 |  X  XXXX X  X XXX    XX    XXX XXXX  X XXX XXXXXXX XXXX  X X   X  XX  XXXX XX  X  X  XXXXX XX X X X X   XX    XX XXXX X   X XX 
+ 42 |  X  XXXX X  X XXX    XX   XXXX XXXX  X XXX XXXXXXX XXXX  X X  XX  XX  XXXX XX  X  X  XXXXX XXXX XXX X   XX    XX XXXX XX  X XX 
+ 39 |  X XXXXX X  X XXX    XX   XXXX XXXX  X XXX XXXXXXX XXXX  X X  XXX XX  XXXX XX  X  X  XXXXX XXXXXXXX X   XX    XXXXXXX XX  X XX 
+ 36 |  X XXXXX XX X XXX X  XX   XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XX XX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXX XX  X XX 
+ 34 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 31 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 28 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 25 |  XXXXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 22 |  XXXXXXX XXXX XXX X  XX X XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 19 |  XXXXXXX XXXX XXXXX  XXXX XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 16 |X XXXXXXXXXXXXXXXXXXX XXXX XXXX XXXXX X XXXXXXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX   XXXXXXXXXXX  X XXX
+ 13 |X XXXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXX XXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXX X XXXXXX XXXXXXXXXXXXXXXX  XXXXXXXXXXX XXXXXX
+ 10 |X XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXX X XXXXXX XXXXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXX
+  7 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXX XXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXX
+  4 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  2 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  

@@ -1,0 +1,27 @@
+{
+    // Tests whether set_display_bits_from_tod() checks
+    // ranges and returns and error. Should return 1
+    // and not change the bits integer.
+    tod_t tod = {
+      .hours   = 8,
+      .minutes = 72,
+      .seconds = 23,
+      .ispm    = 1,
+    };
+    TIME_OF_DAY_SEC  = -1;      // should stay -1
+    CLOCK_DISPLAY_PORT = -1;    // should stay -1
+
+    int bits = -1;              // SHOULD NOT CHANGE
+    int ret = set_display_bits_from_tod(tod, &bits);
+    
+    printf("returned: %d\n",ret);
+    printf("bits:               ");
+    showbits( bits ); printf("\n");
+    printf("TIME_OF_DAY_SEC: %d\n",TIME_OF_DAY_SEC);
+    printf("CLOCK_DISPLAY_PORT: ");
+    showbits(CLOCK_DISPLAY_PORT); printf("\n");
+}
+returned: 1
+bits:               11111111 11111111 11111111 11111111 
+TIME_OF_DAY_SEC: -1
+CLOCK_DISPLAY_PORT: 11111111 11111111 11111111 11111111 

@@ -1,0 +1,16 @@
+.text section
+- 13 section index
+- 4160 bytes offset from start of file
+- 0x1040 preferred virtual address for .text
+.symtab section
+- 26 section index
+- 12504 bytes offset from start of file
+- 1680 bytes total size
+- 24 bytes per entry
+- 70 entries
+Found Function 'int1'
+- 61 symbol index
+- 0x40b0 value
+- 4 size
+- 23 section index
+ERROR: 'int1' in section 23, not in .text section 13

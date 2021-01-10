@@ -1,0 +1,18 @@
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'quintuple'
+- 15 symbol index
+- 0x0 value
+- 8 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'quintuple'
+   0: 8b 07 8d 04 80 89 07 c3 

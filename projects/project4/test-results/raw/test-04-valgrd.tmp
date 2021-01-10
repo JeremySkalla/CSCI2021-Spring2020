@@ -1,0 +1,16 @@
+==356== Memcheck, a memory error detector
+==356== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==356== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==356== Command: ./sumdiag_print 13
+==356== Parent PID: 355
+==356== 
+==356== error calling PR_SET_PTRACER, vgdb might block
+==356== 
+==356== HEAP SUMMARY:
+==356==     in use at exit: 0 bytes in 0 blocks
+==356==   total heap usage: 3 allocs, 3 frees, 876 bytes allocated
+==356== 
+==356== All heap blocks were freed -- no leaks are possible
+==356== 
+==356== For counts of detected and suppressed errors, rerun with: -v
+==356== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

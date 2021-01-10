@@ -1,0 +1,51 @@
+put Lucas brash
+put Mike DM
+put Dustin corny
+put Will lost
+print
+get Dustin
+get El
+get Lucas
+get Jim
+put El weird
+put Steve hairy
+put Nancy torn
+put Barb ran-away?
+print
+hashcode Lucas
+hashcode Barb
+structure
+expand
+structure
+save stranger.hm
+clear
+print
+structure
+put Jim cop
+put Joyce worried
+print
+structure
+get Dustin
+get Joyce
+load stranger.hm
+print
+structure
+get Dustin
+get Joyce
+put Will found
+put Nancy decided
+put Mike girl-crazy
+print
+structure
+next_prime 10
+next_prime 25
+expand
+structure
+
+put Jim cop
+put Joyce worried
+put Erica capitalist
+put Barb gone
+put Max gamer
+save data/other.hm
+quit 

@@ -1,0 +1,15 @@
+==75131== Memcheck, a memory error detector
+==75131== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==75131== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==75131== Command: ./deltas_main text test-results/text1.txt
+==75131== Parent PID: 75130
+==75131== 
+==75131== 
+==75131== HEAP SUMMARY:
+==75131==     in use at exit: 0 bytes in 0 blocks
+==75131==   total heap usage: 4 allocs, 4 frees, 8,752 bytes allocated
+==75131== 
+==75131== All heap blocks were freed -- no leaks are possible
+==75131== 
+==75131== For counts of detected and suppressed errors, rerun with: -v
+==75131== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

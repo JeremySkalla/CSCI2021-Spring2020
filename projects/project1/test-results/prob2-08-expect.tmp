@@ -1,0 +1,19 @@
+Reading text format
+length: 21
+min: 1
+max: 20
+range: 19
+max_height: 7
+units_per_height: 2.71
+     +----+----+----+----+
+ 20 |X                    
+ 17 |XX                   
+ 14 |XXX                  
+ 11 |XXX                  
+  9 |XXXX     X           
+  6 |XXXXX    X XX   XX X 
+  3 |XXXXX X XXXXXXXXXXXXX
+  1 |XXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+
+     0    5    10   15   20   
+

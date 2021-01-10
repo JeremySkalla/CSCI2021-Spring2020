@@ -1,0 +1,18 @@
+Reading int format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 7
+units_per_height: 1.43
+     +----+----+
+ 10 |          X
+  8 |        XXX
+  7 |       XXXX
+  5 |     XXXXXX
+  4 |    XXXXXXX
+  2 |  XXXXXXXXX
+  1 | XXXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   

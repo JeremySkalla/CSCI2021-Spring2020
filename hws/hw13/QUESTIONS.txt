@@ -1,0 +1,217 @@
+                           _________________
+
+                            HW 13 QUESTIONS
+                           _________________
+
+
+- Name: (FILL THIS in)
+- NetID: (THE kauf0095 IN kauf0095@umn.edu)
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+PROBLEM 1: Virtual Memory and pmap
+==================================
+
+(A) memory_parts memory areas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the source code for the provided `memory_parts.c'
+  program. Identify what region of program memory you expect the
+  following variables to be allocated into:
+  - global_arr[]
+  - local_arr[]
+  - malloc_arr
+
+
+(B) Running memory_parts and pmap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compile the `memory_parts' using the provided Makefile.
+  ,----
+  | > make memory_parts
+  `----
+  Run the program and note that it prints several pieces of information
+  - The addresses of several of the variables allocated
+  - Its Process ID (PID) which is a unique number used to identify the
+    running program. This is an integer.
+  For example, the output might be
+  ,----
+  | > ./memory-parts
+  | 0x5605a7c271e9 : main()
+  | 0x5605a7c2a0c0 : global_arr
+  | 0x7ffe5ff7d600 : local_arr
+  | 0x5605a92442a0 : malloc_arr
+  | 0x7f1fa7303000 : mmap'd file
+  | 0x600000000000 : mmap'd block1
+  | 0x600000001000 : mmap'd block2
+  | my pid is 8406
+  | press any key to continue
+  `----
+  so the programs PID is 11160
+
+  The program will also stop at this point until a key is pressed. DO
+  NOT PRESS A KEY YET.
+
+  Open another terminal and type the following command in that new
+  terminal.
+  ,----
+  | > pmap THE-PID-NUMBER-THAT-WAS-PRINTED-EARLIER
+  `----
+
+  Paste the output of pmap below.
+
+
+(C) Program Addresses vs Mapped Addresses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  pmap prints out the virtual address space table for the program. The
+  leftmost column is a virtual address mapped by the OS for the program
+  to some physical location.  The next column is the size of the area of
+  memory associated with that starting address. The 3rd column contains
+  permissions of the program has for the memory area: r for read, w for
+  read, x for execute. The final column is contains any identifying
+  information about the memory area that pmap can discern.
+
+  Compare the addresses of variables and functions from the paused
+  program to the output. Try to determine the virtual address space in
+  which each variable resides and what region of program memory that
+  virtual address must belong to (stack, heap, globals, text).  In some
+  cases, the identifying information provided by pmap may make this
+  obvious.
+
+
+(D) Min Size of Mapped Areas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The minimum size of any virtual area of memory appears to be 4K. Why
+  is this the case?
+
+
+(E) Additional Observations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Notice that in addition to the "normal" variables that are mapped,
+  there is also an entry for the mmap()'d file 'gettysburg.txt' in the
+  virtual address table.  The mmap() function is explored in the next
+  problem but note its calling sequence which involves use of a couple
+  system calls:
+  1. `open()' which is a low level file opening call which returns a
+     numeric file descriptor.
+  2. `fstat()' which obtains information such as size for an open file
+     based on its numeric file descriptor. The `stat()' system call was
+     explored earlier in the class and does the same thing provided the
+     name of a file.
+
+  Finally there are additional calls to mmap() which allocate memory to
+  the program at a specific virtual address. Similar code to this is
+  often used to allocate and expand the heap area of memory for programs
+  in implementations of malloc().
+
+
+PROBLEM 2: mmap() and binary files
+==================================
+
+  This problem walks through the program `print_department.c' which
+  parses a binary file and prints part of its contents.  `mmap()' is
+  used to provide a convenient view of the file as a raw byte
+  sequence. The questions below will guide you through understanding
+  this program.
+
+  Compile and run the `print_departments' program to produce output that
+  looks like the following.
+
+  ,----
+  | > make print_department 
+  | gcc -Wall -g -Og -o print_department print_department.c		
+  | 
+  | > print_department
+  | usage: print_department <file.dat> <department>
+  |   department is one of
+  |   CS : computer science department
+  |   EE : electrical engineering department
+  |   IT : information technology department
+  | 
+  | > file cse_depts.dat 
+  | cse_depts.dat: data
+  | 
+  | > print_department cse_depts.dat CS
+  | Dept Name: CS Offset: 104
+  | Dept Name: EE Offset: 2152
+  | Dept Name: IT Offset: 3688
+  | 
+  | 8 Contacts for CS department
+  | Arindam Banerjee <baner029@umn.edu>
+  | Daniel Boley <boley@umn.edu>
+  | Abhishek Chandra <chandra@umn.edu>
+  | David Hung-Chang Du <du@umn.edu>
+  | Maria Gini <gini@umn.edu>
+  | Stephen Guy <sjguy@umn.edu>
+  | Tian He <tianhe@umn.edu>
+  | Mats Heimdahl <heimdahl@umn.edu>
+  `----
+
+  Answer the following questions to show you understand how this program
+  works.
+
+
+(A) Descriptive Comments of Binary Layout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the comments at the top of the `print_department.c'
+  program. Below, paste the description of the binary "department
+  directory" structure or describe it in your own words. Make sure to
+  include which information/structs appear first and how the sizes of
+  parts of the file appear earlier.
+
+
+(B) Casting mmap()'d bytes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The initial setup of the program uses `mmap()' to assign a pointer to
+  variable `char *file_bytes'.  This pointer will refer directly to the
+  bytes of the binary file.
+
+  Examine the lines
+  ,----
+  |   ////////////////////////////////////////////////////////////////////////////////
+  |   // CHECK the file_header_t struct for integrity, size of department array
+  |   file_header_t *header = (file_header_t *) file_bytes; // binary header struct is first thing in the file
+  `----
+
+  Explain what is happening here: what value will the variable `header'
+  get and how is it used in subsequent lines.
+
+
+(C) Pointer Arithmetic in Byte Arrays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  After finishing with the file header, the next section of the program
+  begins with the following.
+  ,----
+  |   ////////////////////////////////////////////////////////////////////////////////
+  |   // SEARCH the array of department offsets for the department named
+  |   // on the command line
+  | 
+  |   dept_offset_t *offsets =           // after file header, array of dept_offset_t structures
+  |     (dept_offset_t *) (file_bytes + sizeof(file_header_t));
+  | 
+  `----
+
+  Explain what value the `offsets_arr' variable is assigned and how it
+  is used in the remainder of the SEARCH section.
+
+
+(D) Final Program Phase
+~~~~~~~~~~~~~~~~~~~~~~~
+
+  The final phase of the program begins below
+  ,----
+  |   ////////////////////////////////////////////////////////////////////////////////
+  |   // PRINT out all personnel in the specified department
+  |   ...
+  |   contact_t *dept_contacts = (contact_t *) (file_bytes + offset);
+  `----
+  Describe what value `dept_contacts' is assigned and how the final
+  phase uses it.

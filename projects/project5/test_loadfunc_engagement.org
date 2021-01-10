@@ -1,0 +1,302 @@
+#+TITLE: Optional loadfunc tests for engagement points
+#+TESTY: PREFIX="engagement"
+#+TESTY: USE_VALGRIND=1
+
+* void->int tests
+** return_5
+Runs on somefuncs.o, prints results of running 'return_5'
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o return_five void->int'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'return_five'
+- 13 symbol index
+- 0x0 value
+- 11 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'return_five'
+   0: 55 48 89 e5 b8 05 00 00 
+   8: 00 5d c3 
+running void->int function
+returned: 5
+#+END_SRC
+
+
+** sum10
+Runs on morefuncs.o, prints results of running 'sum10'
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o sum10 void->int'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'sum10'
+- 16 symbol index
+- 0x8 value
+- 25 size
+- 1 section index
+- 8 offset in .text of start of function
+Bytes of function 'sum10'
+   0: b8 01 00 00 00 ba 00 00 
+   8: 00 00 83 f8 0a 7f 07 01 
+  10: c2 83 c0 01 eb f4 89 d0 
+  18: c3 
+running void->int function
+returned: 55
+#+END_SRC
+
+* (int,int)->int tests
+** my_pow 3 5
+Runs on somefuncs.o, prints results of running 'my_pow(3,5)'
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o my_pow (int,int)->int 3 5'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'my_pow'
+- 15 symbol index
+- 0xb value
+- 53 size
+- 1 section index
+- 11 offset in .text of start of function
+Bytes of function 'my_pow'
+   0: 55 48 89 e5 89 7d ec 89 
+   8: 75 e8 c7 45 f8 01 00 00 
+  10: 00 c7 45 fc 00 00 00 00 
+  18: eb 0e 8b 45 f8 0f af 45 
+  20: ec 89 45 f8 83 45 fc 01 
+  28: 8b 45 fc 3b 45 e8 7c ea 
+  30: 8b 45 f8 5d c3 
+running int,int->int function with arguments (3,5)
+returned: 243
+#+END_SRC
+
+** my_pow 2 10
+Runs on somefuncs.o, prints results of running 'my_pow(2,10)'
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o my_pow (int,int)->int 2 10'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'my_pow'
+- 15 symbol index
+- 0xb value
+- 53 size
+- 1 section index
+- 11 offset in .text of start of function
+Bytes of function 'my_pow'
+   0: 55 48 89 e5 89 7d ec 89 
+   8: 75 e8 c7 45 f8 01 00 00 
+  10: 00 c7 45 fc 00 00 00 00 
+  18: eb 0e 8b 45 f8 0f af 45 
+  20: ec 89 45 f8 83 45 fc 01 
+  28: 8b 45 fc 3b 45 e8 7c ea 
+  30: 8b 45 f8 5d c3 
+running int,int->int function with arguments (2,10)
+returned: 1024
+#+END_SRC
+
+** modulo 1001 7
+Runs on morefuncs.o, prints results of running 'modulo(1001,7)'
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o modulo (int,int)->int 1001 7'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'modulo'
+- 17 symbol index
+- 0x21 value
+- 8 size
+- 1 section index
+- 33 offset in .text of start of function
+Bytes of function 'modulo'
+   0: 89 f8 99 f7 fe 89 d0 c3 
+running int,int->int function with arguments (1001,7)
+returned: 0
+#+END_SRC
+
+
+** modulo 50 3
+Runs on morefuncs.o, prints results of running 'modulo(50,3)'
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o modulo (int,int)->int 50 3'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'modulo'
+- 17 symbol index
+- 0x21 value
+- 8 size
+- 1 section index
+- 33 offset in .text of start of function
+Bytes of function 'modulo'
+   0: 89 f8 99 f7 fe 89 d0 c3 
+running int,int->int function with arguments (50,3)
+returned: 2
+#+END_SRC
+
+
+* int*->void tests
+** triple 7
+Runs on somefuncs.o, prints results of running 'triple(&seven))'
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o triple int*->void 7'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'triple'
+- 17 symbol index
+- 0x40 value
+- 29 size
+- 1 section index
+- 64 offset in .text of start of function
+Bytes of function 'triple'
+   0: 55 48 89 e5 48 89 7d f8 
+   8: 48 8b 45 f8 8b 10 89 d0 
+  10: 01 c0 01 c2 48 8b 45 f8 
+  18: 89 10 90 5d c3 
+running int*->void function, arg points to 7
+arg is now: 21
+#+END_SRC
+
+** triple 35
+Runs on somefuncs.o, prints results of running 'triple(&thirty5))'
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o triple int*->void 35'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'triple'
+- 17 symbol index
+- 0x40 value
+- 29 size
+- 1 section index
+- 64 offset in .text of start of function
+Bytes of function 'triple'
+   0: 55 48 89 e5 48 89 7d f8 
+   8: 48 8b 45 f8 8b 10 89 d0 
+  10: 01 c0 01 c2 48 8b 45 f8 
+  18: 89 10 90 5d c3 
+running int*->void function, arg points to 35
+arg is now: 105
+#+END_SRC
+
+** quintuple 5
+Runs on morefuncs.o, prints results of running 'quintuple(&five))'
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o quintuple int*->void 5'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'quintuple'
+- 15 symbol index
+- 0x0 value
+- 8 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'quintuple'
+   0: 8b 07 8d 04 80 89 07 c3 
+running int*->void function, arg points to 5
+arg is now: 25
+#+END_SRC
+
+** quintuple 21
+Runs on morefuncs.o, prints results of running 'quintuple(&twenty1))'
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o quintuple int*->void 21'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'quintuple'
+- 15 symbol index
+- 0x0 value
+- 8 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'quintuple'
+   0: 8b 07 8d 04 80 89 07 c3 
+running int*->void function, arg points to 21
+arg is now: 105
+#+END_SRC
+

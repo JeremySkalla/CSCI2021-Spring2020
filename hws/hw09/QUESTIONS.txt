@@ -1,0 +1,240 @@
+                           _________________
+
+                            HW 09 QUESTIONS
+                           _________________
+
+
+- Name: Jeremy Skalla
+- X.500: skall034@umn.edu
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+Important: Run on csel-kh1250-NN
+================================
+
+  The provided code that you will analyze is meant to demonstrate some
+  interesting facets of hardware. Different hardware will give different
+  results. To make sure your results are consistent with the
+  expectations *run your code on csel-kh1250-NN.cselabs.umn.edu*
+  machines. These machines are number `csel-kh1250-01' to
+  `csel-kh1250-37'.  You can log in using
+  ,----
+  | > ssh kauf0095@csel-kh1250-07.cselabs.umn.edu
+  `----
+  or something similar, adjusting the final number from 07 to any number
+  01 to 37.
+
+  Use your X.500 username/password to get access. All CSE labs machines
+  share the same home directory so any code you download to Vole or a
+  physical lab machine will be available on all machines.
+
+  Importantly, expect INCONSISTENT RESULTS in the following environments
+  - VOLE: this is a virtualized environment, not real hardware. Results
+    are likely to vary from one run to the next
+  - apollo.cselabs.umn.edu: This is also a virtualized environment and
+    will not produce consistent results.
+  - Personal machines: hardware will vary for you on your own
+    machine. Results may be faster, slower, consistent with those above
+    or very different. It is may be interesting to compare the results
+    on your own machine to those on the test machines.
+
+
+Compiling and Timing
+====================
+
+  Use the provided Makefile to compile as in
+  ,----
+  | > make
+  | gcc -Wall -g -Og -c superscalar_main.c
+  | gcc -Wall -g -Og -c superscalar_funcs.c
+  | gcc -Wall -g -Og -o superscalar_main superscalar_main.o superscalar_funcs.o
+  `----
+  The compilation uses `-Og' (debug level optimization) which is
+  necessary to stop the compiler from modifying some loops.
+
+  This will produce the `superscalar_main' program which has the
+  following usage:
+  ,----
+  | > ./superscalar_main
+  | usage: ./superscalar_main <MULT> <EXP> <ALG>
+  |   <MULT> and <ALG> are integers, iterates for MULT * 2^{EXP} iterations
+  |   <ALG> is one of
+  |          add1_diff : add 1 times in loop
+  |          add2_diff : add 2 times in same loop; different destinations
+  |          add3_diff : add 3 times in same loop; different destinations
+  |          add2_same : add 2 times in same loop; same destinations
+  |          mul1_diff : multiply 1 times in loop
+  |          mul2_diff : multiply 2 times in same loop; different destinations
+  |          mul3_diff : multiply 3 times in same loop; different destinations
+  |          mul4_diff : multiply 4 times in same loop; different destinations
+  |          mul2_same : multiply 2 times in same loop; same destinations
+  | add1_then_mul_diff : add and multiply in different loops; different destinations
+  | add1_then_mul_same : add and multiply in different loops; same destinations
+  |  add2_and_mul_diff : add twice and multiply in the same loop; different destinations
+  |  add2_and_mul_same : add twice and multiply in the same loop; same destination
+  `----
+
+  Experiment with algorithm `add1_diff' and parameters `MULT' and `EXP'
+  which control the number of iterations run. Experiment until you get a
+  run time of about 1 second such as MULT=1 and EXP=32 on kh-1250-01.
+  ,----
+  | kh-1250-01> time ./superscalar_main 1 32 add1_diff
+  | add1_diff for 18 * 2^{27} = 2415919104 iterations... complete
+  |
+  | real    0m1.010s
+  | user    0m1.009s
+  | sys     0m0.000s
+  `----
+
+
+PROBLEM 1: Addition
+===================
+
+(A) add1_diff / add2_diff / add3_diff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the source code in `superscalar_funcs.c' for the following
+  algorithms.
+  - add1_diff : add 1 times in loop
+  - add2_diff : add 2 times in same loop; different destinations
+  - add3_diff : add 3 times in same loop; different destinations
+  Note that each does some additions in a loop. Time each of these WITH
+  THE SAME MULT/EXP parameters and show your timings. Describe how the
+  timings compare and speculate on why.
+
+  Note that all of these involve incrementing a counter (`i++') so the
+  number of additions is one greater than the algorithm name suggests.
+
+  add1_diff is the fastest, by about .06 seconds ahead of add2_diff. add3_diff is way behind,
+  around half a second behind add1_diff. add3_diff is way behind because it's adding 3 things
+  each time instead of two like the others, and add2_diff is slightly slower than add1_diff
+  because it doesn't have to start at a different spot and have a different update
+
+
+(B) add2_diff / add2_same
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compare the source code of the two algorithms below.
+  - add1_diff : add 1 times in loop
+  - add2_diff : add 2 times in same loop; different destinations
+  - add2_same : add 2 times in same loop; same destinations
+  Note that the only difference between the add2_X algorithms is that
+  the destination for the results.
+
+  Compare timings for these and speculate on the reasons for any
+  unexpected results.
+
+  add2_same is around a second slower than the other two. I'm guessing it's because
+  it has to write the variable each time.
+
+PROBLEM 2: Multiplication
+=========================
+
+(A) add1_diff / mul1_diff
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compare the following two algorithms.
+  - add1_diff : add 1 times in loop
+  - mul1_diff : multiply 1 times in loop
+  Time them on the same parameters and speculate on the timing
+  differences.
+
+  add1_diff is 3 times faster than mul1_diff, my guess would be since the numbers
+  are getting a lot larger, and multiplication is probably harder on the machine than
+  simple addition
+
+
+(B) mul1_diff / mul2_diff / mul3_diff / mul4_diff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compare the following two algorithms.
+  - mul1_diff : multiply 1 times in loop
+  - mul2_diff : multiply 2 times in same loop; different destinations
+  - mul3_diff : multiply 3 times in same loop; different destinations
+  - mul4_diff : multiply 4 times in same loop; different destinations
+  Time them on the same parameters and speculate on the timing
+  differences.
+
+  The first three are very similar in timing with the 4th being about a second slower.
+  I'm not sure exactly why, but I'm thinking the third change somehow causes it to be much slower
+
+(C) mul1_diff / mul2_diff / mul2_same
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compare the following two algorithms.
+  - mul1_diff : multiply 1 times in loop
+  - mul2_diff : multiply 2 times in same loop; different destinations
+  - mul2_same : multiply 2 times in same loop; same destinations
+  Time them on the same parameters and speculate on the timing
+  differences.
+
+  mul2_same is about double the time, and I'm guessing again, the overwrite of the variable
+  every iteration is causing it to be much slower
+
+
+PROBLEM 3: Combined Addition/Multiplication
+===========================================
+
+(A) add1_then_mul_diff / add2_and_mul_diff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compare the following two algorithms.
+  - add1_then_mul_diff : add and multiply in different loops; different
+    destinations
+  - add2_and_mul_diff : add twice and multiply in the same loop;
+    different destinations
+  Note that each loop involves incrementing a counter so both of the
+  above algorithms should do the same number of operations for N
+  iterations:
+  ------------------------------------------------
+                       loop        total  overall
+   Algorithm           incr  adds  adds   total
+  ------------------------------------------------
+   add1_then_mul_diff  2*N   1*N   3*N    4*N
+   add2_and_mul_diff   1*N   2*N   3*N    4*N
+  ------------------------------------------------
+
+  Time these algorithms on the same parameters and speculate on the
+  timing differences.
+
+  Compare the timings to your earlier results for add1_diff and
+  mul1_diff.
+
+  add2_and_mul_diff is about a second and a half faster than add1_then_mul_diff, and
+  I'm guessing that's probably because add1 uses two loops to add and mul
+  and add2 only uses one loop, but that's just a guess
+
+(B) Table of Timings
+~~~~~~~~~~~~~~~~~~~~
+
+  Consider table of algorithm variants given below.  Part A of this
+  question compared two of these algorithms. Add their times into the
+  table below under the 'User Time' column then time the other two
+  algorithms to complete the table of timings. The table will be
+  analyzed in the next part.
+
+  ---------------------------------------------
+           Memory                         User
+   #Loops  Locations  Algorithm           Time
+  ---------------------------------------------
+        2  Different  add1_then_mul_diff  4.823s
+        1  Different  add2_and_mul_diff   3.240s
+        2  Same       add1_then_mul_same  4.399s
+        1  Same       add2_and_mul_same   5.387s
+  ---------------------------------------------
+
+
+(C) Table Analysis
+~~~~~~~~~~~~~~~~~~
+
+  Explain why the following observations can be made about the timing
+  table from part B.
+
+   Alg1                vs  Alg2                Reason
+  ----------------------------------------------------
+   add1_then_mul_diff  =   add1_then_mul_same  Multiplication and addition are in different loops
+   add2_and_mul_diff   <   add2_and_mul_same   same loop but lots of overwrites in same
+   add1_then_mul_diff  >   add2_and_mul_diff   two loops vs one loop
+   add1_then_mul_same  <   add2_and_mul_same   two loops vs lots of overwrites

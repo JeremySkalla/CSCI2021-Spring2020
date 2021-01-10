@@ -1,0 +1,240 @@
+                           _________________
+
+                            HW 01 QUESTIONS
+                           _________________
+
+
+- Name: Jeremy Skallla
+- NetID: skall034
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+PROBLEM 1 `age.c'
+=================
+
+A
+~
+
+  Examine the source code for `age.c'. Compile it using the following
+  invocation of `gcc'
+  ,----
+  | gcc age.c
+  `----
+  This should create the executable `a.out'. Run this program using the
+  invocation.
+  ,----
+  | ./a.out
+  `----
+  Perform several runs of the program with the following values and
+  paste your output in the space below.
+  - Enter 16
+  - Enter 18
+  - Enter 25
+  - Enter 44
+
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ gcc age.c
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ ./a.out
+Enter your age in years: 
+16
+You are 8409600 minutes old.
+You're too young to do anything fun.
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ ./a.out
+Enter your age in years: 
+18
+You are 9460800 minutes old.
+You can vote but cannot legally imbibe alcohol.
+I bet that hasn't stopped you from trying though...
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ ./a.out
+Enter your age in years: 
+25
+You are 13140000 minutes old.
+You may imbibe alcohol but cannot be president
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ ./a.out
+Enter your age in years: 
+44
+You are 23126400 minutes old.
+You may imbibe alcohol but cannot be president
+
+
+B
+~
+
+  Analyze the code for `age.c' and describe a flaw in the conditional
+  structure towards the end that prevents the output:
+  ,----
+  | You can vote, drink, and be president.
+  | Try all three at once!
+  `----
+  from being printed.
+
+  Alter the code to fix this bug so that for ages 35 and larger, the
+  above text is printed. Paste your fixed code for the conditional below
+  and test it by recompiling and showing a demo run.
+
+else if( age_years >= 21 && age_years <35){
+    printf("You may imbibe alcohol but cannot be president\n");
+  }
+else if ( age_years >=35) {
+    printf("You can vote, drink, and be president.\nTry all three at once!\n");
+  }
+
+C
+~
+
+  Attempt to enter some absurd ages for the age computation.
+  - Enter 5000
+  - Enter -5000
+  Describe anything strange that seems to be happening based your
+  understanding of how basic arithmetic is supposed to work.
+
+  If you happen to know WHY this strangeness is happening, describe it
+  below.  If not, you will find out soon.
+
+I don't know why it's happening but 5000 gives me -1666967296 minutes old but says I am old enough to do all 3, and -5000 gives 1666967296 minutes old but says I'm too young to do anything
+
+D
+~
+
+  Describe which function is used to print information to the screen.
+  Describe how it seems to work to substitute values into output and
+  what *format specifier* indicates an integer should be substituted.
+
+It appears that printf is used to display the information, and it substitutes an interger into "%d" I'm assuming
+
+E
+~
+
+  Describe what function is used to read typed input interactively from
+  a user in the `age.c' program.  Describe anything that seems strange
+  about this function or its arguments.
+
+  We will learn in not long why this bit of strangeness is necessary.
+
+It uses scanf, which takes an input of "%d" and then takes that information and puts it into age_years but I'm not sure why it is &age_years instead of just age_years. The whole thing is a little strange
+
+
+PROBLEM 2 Collatz
+=================
+
+A
+~
+
+  Examine and compile the code associated with the collatz
+  program. There are three files associated with this program.
+  - `collatz_funcs.c' which defines two utility functions for computing
+    the Collatz sequence
+  - `collatz_main.c' which defines a `main()' function to compute a
+    Collatz sequence
+  - `collatz.h' header file which declares functions in
+    `collatz_funcs.c' so that they are known to `collatz_main.c'
+
+  To compile the program, use the following invocation of `gcc'
+  ,----
+  | gcc -o collatz collatz_funcs.c collatz_main.c
+  `----
+  This should create the program `collatz' which can be run with
+  ,----
+  | ./collatz
+  `----
+
+  Do so and enter inputs
+  - Starting integer 7
+  - Show output: 1
+
+  Paste the output below.
+
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ gcc -o collatz collatz_funcs.c collatz_main.c
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ ./collatz
+Enter the starting integer: 7
+The next value in the Collatz sequence is 22
+Show output of steps (0:NO, any other int: yes): 1
+Step 0: 7
+Step 1: 22
+Step 2: 11
+Step 3: 34
+Step 4: 17
+Step 5: 52
+Step 6: 26
+Step 7: 13
+Step 8: 40
+Step 9: 20
+Step 10: 10
+Step 11: 5
+Step 12: 16
+Step 13: 8
+Step 14: 4
+Step 15: 2
+Step 16: 1
+The starting value 7 converged to 1 in 16 steps
+
+B
+~
+
+  Determine what the "dash-O" option used above for `gcc -o' does. For
+  example, what happens if one runs
+  ,----
+  | gcc -o GLIPGLOP collatz_funcs.c collatz_main.c
+  `----
+  instead.  You may wish to use the `ls' command to list the files in
+  the current directory.
+
+  Describe what happens if you omit this option `-o' when compiling as
+  in
+  ,----
+  | gcc collatz_funcs.c collatz_main.c
+  `----
+
+-o allows you to name the output file instead of just having it be a.out
+
+
+C
+~
+
+  Attempt to compile only the file `collatz_main.c' by doing
+  ,----
+  | gcc -o something collatz_main.c
+  `----
+
+  This should result in an error. Show the output of that error and
+  determine why the compilation fails.
+
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ gcc -o something collatz_main.c
+/tmp/ccwbl1GK.o: In function `main':
+collatz_main.c:(.text+0x4d): undefined reference to `collatz_next'
+collatz_main.c:(.text+0x9e): undefined reference to `collatz_steps'
+collect2: error: ld returned 1 exit status
+
+This happens because collatz_funcs.c contains the functions collatz_next and collatz_steps, so there's no function to run. 
+
+D
+~
+
+  Attempt to compile only the file `collatz_funcs.c' by doing
+  ,----
+  | gcc -o something collatz_funcs.c
+  `----
+
+  This should result in an error. Show the output of that error and
+  determine why the compilation fails.
+
+skall034@csel-vole-43:/home/skall034/csci2021/hw01 $ gcc -o something collatz_funcs.c
+/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+
+I'm going to assume this happens because there's no main function in collatz_funcs.c so it returns an error.
+
+Review Course Syllabus
+======================
+
+  Make sure to review the Course Syllabus to acquaint yourself with
+  course policies such as the following.
+  - The PRIME DIRECTIVE to preserve academic integrity
+  - Fair collaboration with other students
+  - Late submission policies on assignments (projects, HW, quizzes, lab
+    work)
+  - Grading criteria and weighting on exams/assignments
+
+Can do good sir :)

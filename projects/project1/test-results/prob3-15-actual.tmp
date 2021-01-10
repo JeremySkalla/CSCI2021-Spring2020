@@ -1,0 +1,57 @@
+TreeMap Editor
+Commands:
+  quit:            exit the program
+  print:           shows contents of the tree in reverse sorted order
+  add <key> <val>: inserts the given key/val into the tree, duplicate keys are ignored
+  get <key>:       prints FOUND if the name is in the tree, NOT FOUND otherwise
+  clear:           eliminates all key/vals from the tree
+  preorder:        prints contents of the tree in pre-order which is how it will be saved
+  save <file>:     writes the contents of the tree in pre-order to the given file
+  load <file>:     clears the current tree and loads the one in the given file
+TM> add Kyle 1
+TM> add Stan 2
+TM> add Cartman 3
+TM> add Kenny 4
+TM> add Butters 5
+TM> print
+  Stan -> 2
+Kyle -> 1
+    Kenny -> 4
+  Cartman -> 3
+    Butters -> 5
+TM> save test-results/sp5.tm
+TM> add Wendy 6
+TM> add MrHat 7
+TM> add Token 8
+TM> print
+    Wendy -> 6
+      Token -> 8
+  Stan -> 2
+    MrHat -> 7
+Kyle -> 1
+    Kenny -> 4
+  Cartman -> 3
+    Butters -> 5
+TM> load test-results/sp5.tm
+TM> print
+  Stan -> 2
+Kyle -> 1
+    Kenny -> 4
+  Cartman -> 3
+    Butters -> 5
+TM> add MrGarrison 6
+TM> print
+  Stan -> 2
+    MrGarrison -> 6
+Kyle -> 1
+    Kenny -> 4
+  Cartman -> 3
+    Butters -> 5
+TM> load test-results/sp5.tm
+TM> print
+  Stan -> 2
+Kyle -> 1
+    Kenny -> 4
+  Cartman -> 3
+    Butters -> 5
+TM> quit

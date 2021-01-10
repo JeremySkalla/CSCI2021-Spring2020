@@ -1,0 +1,15 @@
+==9008== Memcheck, a memory error detector
+==9008== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==9008== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==9008== Command: ./search_benchmark 1 8 4 tlb
+==9008== Parent PID: 9007
+==9008== 
+==9008== 
+==9008== HEAP SUMMARY:
+==9008==     in use at exit: 0 bytes in 0 blocks
+==9008==   total heap usage: 526 allocs, 526 frees, 16,448 bytes allocated
+==9008== 
+==9008== All heap blocks were freed -- no leaks are possible
+==9008== 
+==9008== For counts of detected and suppressed errors, rerun with: -v
+==9008== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

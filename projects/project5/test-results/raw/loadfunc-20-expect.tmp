@@ -1,0 +1,11 @@
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1328 bytes offset from start of file
+- 360 bytes total size
+- 24 bytes per entry
+- 15 entries
+ERROR: Function 'missing_func' not found

@@ -1,0 +1,21 @@
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'sum10'
+- 16 symbol index
+- 0x8 value
+- 25 size
+- 1 section index
+- 8 offset in .text of start of function
+Bytes of function 'sum10'
+   0: b8 01 00 00 00 ba 00 00 
+   8: 00 00 83 f8 0a 7f 07 01 
+  10: c2 83 c0 01 eb f4 89 d0 
+  18: c3 

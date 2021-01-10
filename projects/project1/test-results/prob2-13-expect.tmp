@@ -1,0 +1,26 @@
+Reading int format
+length: 127
+min: -20
+max: 20
+range: 40
+max_height: 15
+units_per_height: 2.67
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+ 20 |              XXXX                                                           XXXX                                              
+ 17 |          XXXXXXXXXXXX                                                   XXXXXXXXXXXX                                          
+ 14 |        XXXXXXXXXXXXXXXXX                                              XXXXXXXXXXXXXXXXX                                       
+ 12 |       XXXXXXXXXXXXXXXXXXX                                            XXXXXXXXXXXXXXXXXXX                                      
+  9 |     XXXXXXXXXXXXXXXXXXXXXXX                                        XXXXXXXXXXXXXXXXXXXXXXX                                    
+  6 |   XXXXXXXXXXXXXXXXXXXXXXXXXX                                     XXXXXXXXXXXXXXXXXXXXXXXXXX                                   
+  4 |  XXXXXXXXXXXXXXXXXXXXXXXXXXXX                                   XXXXXXXXXXXXXXXXXXXXXXXXXXXX                                  
+  1 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                
+ -1 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                              X
+ -4 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                           XXX
+ -6 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         XXXX
+ -9 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXX
+-12 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                  XXXXXXX
+-14 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX               XXXXXXXXX
+-17 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          XXXXXXXXXXX
+-20 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  

@@ -1,0 +1,13 @@
+WARNING: expected host 'csel-atlas' but got host 'Pecus'
+WARNING: timing results / scoring will not reflect actual scoring
+WARNING: run on host 'csel-atlas' for accurate results
+==== Matrix Diagonal Sum Benchmark Version 1 ====
+  SIZE       BASE       OPTM  SPDUP POINTS 
+   512 1.5625e-02 1.5625e-02   1.00      0 
+  1024 9.3750e-02 6.2500e-02   1.50      1 
+  1101 1.2500e-01 6.2500e-02   2.00      2 
+RAW POINTS: 3
+TOTAL POINTS: 3 / 35
+WARNING: expected host 'csel-atlas' but got host 'Pecus'
+WARNING: timing results / scoring will not reflect actual scoring
+WARNING: run on host 'csel-atlas' for accurate results

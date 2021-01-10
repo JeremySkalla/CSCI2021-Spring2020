@@ -1,0 +1,278 @@
+- Name: Jeremy Skalla
+- NetID: skall034
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+PROBLEM 1: Memory Diagram
+=========================
+
+  Examine the code in dog_diagram.c which uses a couple simple functions
+  with a struct.
+  ,----
+  |  1  #include <stdio.h>
+  |  2  typedef struct{
+  |  3    double weight;
+  |  4    int age;
+  |  5    char name[8];
+  |  6  } dog_t;
+  |  7
+  |  8  void init_dog(dog_t *d){
+  |  9    strcpy(d->name, "Rolf");
+  | 10    d->age = 0;
+  | 11    d->weight = 5.0;
+  | 12    ////// POSITION A
+  | 13    return;
+  | 14  }
+  | 15
+  | 16  void birthday(int num, dog_t *d){
+  | 17    int next = d->age + num;
+  | 18    if(next < 3){
+  | 19      d->weight += 10.0;
+  | 20    }
+  | 21    ////// POSITION B
+  | 22    d->age = next;
+  | 23    return;
+  | 24  }
+  | 25
+  | 26  int main(){
+  | 27    dog_t dog;
+  | 28    init_dog(&dog);
+  | 29    double curwgt = dog.weight;
+  | 30    birthday(2, &dog);
+  | 31    printf("%s gained %f pounds\n",
+  | 32           dog.name, dog.weight-curwgt);
+  | 33    return 0;
+  | 34  }
+  `----
+
+  Fill in the memory diagrams below for the layout of memory if
+  execution stops at the positions given in the comments.
+
+
+POSITION A
+----------
+
+  ,----
+  | |------------+-------------+-------+-------|
+  | | Frame      | Sym         | Addr  | Value |
+  | |------------+-------------+-------+-------|
+  | | main()     | curwgt      | #1220 | ?     |
+  | | line:28    | dog.name[7] | #1219 | ?     |
+  | |            | dog.name[6] | #1218 | ?     |
+  | |            | dog.name[5] | #1217 | ?     |
+  | |            | dog.name[4] | #1216 | \0    |
+  | |            | dog.name[3] | #1215 | f     |
+  | |            | dog.name[2] | #1214 | l     |
+  | |            | dog.name[1] | #1213 | o     |
+  | |            | dog.name[0] | #1212 | R     |
+  | |            | dog.age     | #1208 | 0     |
+  | |            | dog.weight  | #1200 | 5.0   |
+  | |------------+-------------+-------+-------|
+  | | init_dog() | d           | #1192 | #1200 |
+  | | line:12    |             |       |       |
+  | |------------+-------------+-------+-------|
+  `----
+
+
+POSITION B
+----------
+
+  ,----
+  | |------------+------------+-------+-------|
+  | | Frame      | Sym        | Addr  | Value |
+  | |------------+------------+-------+-------|
+  | | main()     | curwgt     |       | 5.0   |
+  | | line:28    | dog.name[7]| #1219 | ?     |
+  | |            | dog.name[6]| #1218 | ?     |
+  | |            | dog.name[5]| #1217 | ?     |
+  | |            | dog.name[4]| #1216 | \0    |
+  | |            | dog.name[3]| #1215 | f     |
+  | |            | dog.name[2]| #1214 | l     |
+  | |            | dog.name[1]| #1213 | o     |
+  | |            | dog.name[0]| #1212 | R     |
+  | |            | dog.age    | #1208 | 0     |
+  | |            | dog.weight | #1200 | 15.0  |
+  | |------------+------------+-------+-------|
+  | | birthday() | d          | #1192 | #1200 |
+  | | line:21    | num        | #1188 | 2     |
+  | |            | next       | #1184 | 2     |
+  | |------------+------------+-------+-------|
+  |
+  `----
+
+
+PROBLEM 2: Valgrind Debugging badmem.c
+======================================
+
+  The file badmem.c has functions main() and set_pn() in it but has a
+  bad memory problem associated with it.  A sample compile and run is as
+  follows.
+
+  ,----
+  | > gcc -g badmem.c
+  | > a.out
+  | Segmentation fault (core dumped)
+  `----
+
+
+A
+~
+
+  Below is some output from Valgrind. Explain the errors that are
+  identified by Valgrind and inspect the source code of badmem.c to
+  discover the source of the error. Clearly identify whether there is a
+  problem in main() or set_pn().
+
+  ,----
+  | > valgrind ./a.out
+  | ==15611== Memcheck, a memory error detector
+  | ==15611== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  | ==15611== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+  | ==15611== Command: ./a.out
+  | ==15611==
+  | ==15611== Use of uninitialised value of size 8
+  | ==15611==    at 0x10873B: set_pn (badmem.c:40)
+  | ==15611==    by 0x1086B8: main (badmem.c:20)
+  | ==15611==
+  | ==15611== Invalid write of size 4
+  | ==15611==    at 0x10873B: set_pn (badmem.c:40)
+  | ==15611==    by 0x1086B8: main (badmem.c:20)
+  | ==15611==  Address 0x5 is not stack'd, malloc'd or (recently) free'd
+  | ==15611==
+  | ==15611==
+  | ==15611== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+  | ==15611==  Access not within mapped region at address 0x5
+  | ==15611==    at 0x10873B: set_pn (badmem.c:40)
+  | ==15611==    by 0x1086B8: main (badmem.c:20)
+  | ==15611==  If you believe this happened as a result of a stack
+  | ==15611==  overflow in your program's main thread (unlikely but
+  | ==15611==  possible), you can try to increase the size of the
+  | ==15611==  main thread stack using the --main-stacksize= flag.
+  | ==15611==  The main thread stack size used in this run was 8720384.
+  | ==15611==
+  | ==15611== HEAP SUMMARY:
+  | ==15611==     in use at exit: 0 bytes in 0 blocks
+  | ==15611==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+  | ==15611==
+  | ==15611== All heap blocks were freed -- no leaks are possible
+  | ==15611==
+  | ==15611== For counts of detected and suppressed errors, rerun with: -v
+  | ==15611== Use --track-origins=yes to see where uninitialised values come from
+  | ==15611== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+  | Segmentation fault (core dumped)
+  `----
+
+  Pointers are empty, passed in with assumption they aren't.
+
+B
+~
+
+  Fix badmem.c so that it works correctly. Your fix should NOT change
+  the prototype for the set_pn() function but can make other adjustments
+  to local variables.
+
+        pn_t pn1;
+        set_pn(arr1, 5, &pn1);
+        pn1: {.poss=3, .neg=2}
+
+PROBLEM 3: Best Score in File
+=============================
+
+  A grading file has scores for an exam formatted as in the following
+  example:
+  ,----
+  | Darlene 91.0
+  | Angela  76.5
+  | Elliot  94.5
+  | Tyrell  87.5
+  | Dom     70.0
+  | Phillip 55.5
+  `----
+  The names of students are the first item followed by a numeric score
+  on their programming exam.  Write `main()' function in the file
+  `best_score.c' which
+  - Opens the file
+  - Reads through all the contents
+  - Prints out the name and score of the highest scorer
+
+  Make use of the following small struct in this exercise to ease the
+  process of copying information as indicated.
+  ,----
+  | typedef struct {
+  |   char name[128];               // name of student
+  |   double score;                 // score on exam
+  | } grade_t;
+  | // struct which allows assignment of name/score such as in
+  | //   best = curgrade;
+  | //   printf("best is now: %s %f\n", best.name, best.score);
+  `----
+  - Don't forget to close the file
+  - Study the session below for special cases such as empty files
+
+  ,----
+  | > gcc -g best_score.c
+  | > ./a.out
+  | usage: ./a.out <filename>
+  | <filename> should have columns of names, numbers as in
+  | Darlene 91.0
+  | Angela  76.5
+  | Elliot  94.5
+  | Tyrell  87.5
+  | Dom     70.0
+  | Phillip 55.5
+  | > ./a.out scores1.txt
+  | Best score: Elliot 94.500000
+  | > ./a.out scores2.txt
+  | Best score: Student13 90.800000
+  | > ./a.out scores3.txt
+  | Best score: Student43 99.300000
+  | > ./a.out scores-empty.txt
+  | file was empty
+  | > ./a.out no-such-file.txt
+  | could not open the file
+  `----
+
+int main(int argc, char *argv[]){
+
+   if(argc < 2){
+        printf("usage: %s <filename>\n", argv[0]);
+        printf("<filename> should have columns of names, numbers as in\n");
+        printf("Darlene 91.0 \n");
+        printf("Angela  76.5 \n");
+        printf("Elliot  94.5 \n");
+        printf("Tyrell  87.5 \n");
+        printf("Dom     70.0 \n");
+        printf("Phillip 55.5 \n");
+        return 1;
+   }
+
+   FILE *fin = fopen(argv[1],"r");
+
+   if(fin == NULL) {
+        printf("could not open the file\n");
+        return 1;
+   }
+
+   grade_t best;
+
+   int ret = fscanf(fin,"%s %lf",best.name, &best.score);
+   if(ret == EOF) {
+        printf("file was empty\n");
+        fclose(fin);
+        return 1;
+   }
+
+   grade_t grade;
+
+   while(fscanf(fin, "%s %lf", grade.name, &grade.score) != EOF) {
+        if(grade.score > best.score) {
+            best = grade;
+        }
+   }
+
+   fclose(fin);
+   printf("Best score: %s %f\n",best.name, best.score);
+   return 0;
+}

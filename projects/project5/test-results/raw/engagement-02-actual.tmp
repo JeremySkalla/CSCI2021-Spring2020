@@ -1,0 +1,20 @@
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'modulo'
+- 17 symbol index
+- 0x21 value
+- 8 size
+- 1 section index
+- 33 offset in .text of start of function
+Bytes of function 'modulo'
+   0: 89 f8 99 f7 fe 89 d0 c3 
+running int,int->int function with arguments (50,3)
+returned: 2

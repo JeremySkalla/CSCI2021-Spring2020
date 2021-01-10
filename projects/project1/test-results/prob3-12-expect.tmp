@@ -1,0 +1,18 @@
+TreeMap Editor
+Commands:
+  quit:            exit the program
+  print:           shows contents of the tree in reverse sorted order
+  add <key> <val>: inserts the given key/val into the tree, duplicate keys are ignored
+  get <key>:       prints FOUND if the name is in the tree, NOT FOUND otherwise
+  clear:           eliminates all key/vals from the tree
+  preorder:        prints contents of the tree in pre-order which is how it will be saved
+  save <file>:     writes the contents of the tree in pre-order to the given file
+  load <file>:     clears the current tree and loads the one in the given file
+TM> add hello world
+TM> print
+hello -> world
+TM> preorder
+hello world
+TM> save test-results/hello-world.tm
+TM> clear
+TM> quit

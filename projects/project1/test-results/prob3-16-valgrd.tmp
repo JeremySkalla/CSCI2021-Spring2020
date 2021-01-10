@@ -1,0 +1,15 @@
+==74185== Memcheck, a memory error detector
+==74185== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==74185== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==74185== Command: ./treemap_main -echo
+==74185== Parent PID: 74184
+==74185== 
+==74185== 
+==74185== HEAP SUMMARY:
+==74185==     in use at exit: 0 bytes in 0 blocks
+==74185==   total heap usage: 67 allocs, 67 frees, 83,568 bytes allocated
+==74185== 
+==74185== All heap blocks were freed -- no leaks are possible
+==74185== 
+==74185== For counts of detected and suppressed errors, rerun with: -v
+==74185== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

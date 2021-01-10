@@ -1,0 +1,326 @@
+                           _________________
+
+                            HW 12 QUESTIONS
+                           _________________
+
+
+- Name: (FILL THIS in)
+- NetID: (THE kauf0095 IN kauf0095@umn.edu)
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+PROBLEM 1: Timing Benchmarks
+============================
+
+  The code in `reversal.c' implements two functions which reverse the
+  elements of an array. They take markedly different approaches.
+  ,----
+  | void reverse_arr1(int *arr, long size){
+  |   int *tmp = malloc(sizeof(int)*size);
+  |   for(long i=0; i<size; i++){
+  |     tmp[i] = arr[size-i-1];
+  |   }
+  |   for(long i=0; i<size; i++){
+  |     arr[i] = tmp[i];
+  |   }
+  |   free(tmp);
+  | }
+  |
+  | void reverse_arr2(int *arr, long size){
+  |   for(long i=0; i<size/2; i++){
+  |     int tmp = arr[i];
+  |     arr[i] = arr[size-i-1];
+  |     arr[size-i-1] = tmp;
+  |   }
+  | }
+  `----
+
+
+(A) Predictions
+~~~~~~~~~~~~~~~
+
+  Predict which of these two functions will run faster based on their
+  code characteristics.
+
+  The second one will run faster, it only uses one loop, plus it doesn't allocate
+  memory and free it, which doesn't seem necessary.
+
+(B) Timing
+~~~~~~~~~~
+
+  Modify the provided `reversal.c' file to perform timing calculations
+  on the two functions as they are called on different sizes of arrays.
+  Print runtimes in a tabular format.
+
+  Paste the C code you wrote below to show you how you timed the
+  function runs.
+
+  clock_t begin, end;
+  begin = clock();
+  reverse_arr1(arr1,size);
+  end = clock();
+  double cpu_time1 = ((double) (end - begin)) / CLOCKS_PER_SEC;
+  printf("%10.4e ",cpu_time1);
+
+  begin = clock();
+  reverse_arr2(arr2,size);
+  end = clock();
+  double cpu_time2 = ((double) (end - begin)) / CLOCKS_PER_SEC;
+  printf("%10.4e ",cpu_time2);
+
+  printf("\n");
+
+
+(C) Analysis
+~~~~~~~~~~~~
+
+  Paste the table of numbers your code produced for timing the two
+  reversal functions. Describe if the one you predicted would be faster
+  actually was measured to be faster.
+
+0.0000e+00 0.0000e+00
+0.0000e+00 0.0000e+00
+1.5625e-02 0.0000e+00
+3.1250e-02 0.0000e+00
+4.6875e-02 0.0000e+00
+9.3750e-02 1.5625e-02
+1.8750e-01 3.1250e-02
+3.9062e-01 7.8125e-02
+7.8125e-01 1.5625e-01
+1.5469e+00 3.2812e-01
+3.1406e+00 7.5000e-01
+
+rev2 is faster.
+
+
+PROBLEM 2: ax then xpy VS axpy
+==============================
+
+  Examine the timing code in `axpy.c'. Consider the 3 functions `ax()',
+  `xpy()', and `axpy()'.  Note that these are timed in `main()' as
+  follows.
+  ,----
+  | // start timing 1
+  |     ax(a,x1,size);
+  |     xpy(x1,y,size);
+  | // stop timing
+  |
+  | // start timing 2
+  |     axpy(a,x2,y,size);
+  | // stop timing
+  `----
+  This is because the first two functions together do what `axpy()'
+  does.
+
+  Note also that `axpy()' has two "fairness" loops which do affect the
+  results but compensate for the fact that the previous two functions
+  combined have two loops.
+
+  Time these functions using the provided code. Explain the results you
+  observe and if one appears to be faster than the other, describe what
+  features of the processor and memory architecture might be affecting
+  the timings.
+
+  axpy is faster than ax xpy and that makes sense, because it only uses one pass which helps piplining
+  and using the cache more efficiently
+
+
+PROBLEM 3: Cache and Loop Iterations
+====================================
+
+  Below are tables showing values in Main Memory and the state of a
+  small Cache.  Beneath this is a short code fragment that sums elements
+  according from main memory. The code has a user parameter
+  `stride'. For strides of 1,2,3,4, work through the code changing cache
+  and counting how many cache hits/misses occur with the given
+  stride. Show the final state of cache in each case.
+
+
+Main Memory
+~~~~~~~~~~~
+
+  ,----
+  | | Addr | Addr Bits      | Value |
+  | |------+----------------+-------|
+  | |   20 | 00  10  0000   |     9 |
+  | |   24 | 00  10  0100   |    10 |
+  | |   28 | 00  10  1000   |    11 |
+  | |   2C | 00  10  1100   |    12 |
+  | |   30 | 00  11  0000   |    13 |
+  | |   34 | 00  11  0100   |    14 |
+  | |   38 | 00  11  1000   |    15 |
+  | |   3C | 00  11  1100   |    16 |
+  | |   40 | 01  00  0000   |    17 |
+  | |   44 | 01  00  0100   |    18 |
+  | |   48 | 01  00  1000   |    19 |
+  | |   4C | 01  00  1100   |    20 |
+  | |   50 | 01  01  0000   |    21 |
+  | |   54 | 01  01  0100   |    22 |
+  | |   58 | 01  01  1000   |    23 |
+  | |   5C | 01  01  1100   |    24 |
+  | |   60 | 01  10  0000   |    25 |
+  | |   64 | 01  10  0100   |    26 |
+  | |   68 | 01  10  1000   |    27 |
+  | |   6C | 01  10  1100   |    28 |
+  | |------+----------------+-------|
+  | |      | Tag Set Offset |       |
+  `----
+
+
+Cache
+~~~~~
+
+  - Direct-mapped: 1 line per set
+  - 16-byte lines = 4-bit offset
+  - 4 Sets = 2-bit index
+  - 8-bit Address = 2-bit tag
+  - Total Cache Size = 64 bytes 4 sets * 16 bytes
+  - Mostly cold with some data from an earlier part of the code
+
+  ,----
+  | |     |   |     | Blocks/Line           |
+  | | Set | V | Tag | 0-3  4-7  8-11  12-15 |
+  | |-----+---+-----+-----------------------|
+  | |  00 | 1 | 01  | 1    2    3     4     |
+  | |  01 | 1 | 01  | 21   22   23    24    |
+  | |  10 | 1 | 01  | 25   26   27    28    |
+  | |  11 | 1 | 00  | 13   14   15    16    |
+  | |-----+---+-----+-----------------------|
+  | | Set | V | Tag | 0-3  4-7  8-11  12-15 |
+  `----
+
+
+Code
+~~~~
+
+  ,----
+  | int *data = (int *) 0x20;           // address of start of the array
+  | int stride; scanf("%d", &stride);   // user enters 1, 2, 3, or other values
+  | int sum = 0;
+  | for(int i=0; i<20; i += stride){
+  |   sum += data[i];
+  | }
+  `----
+
+
+Stats for Strides:
+~~~~~~~~~~~~~~~~~~
+
+  Show sum, number of hits/misses, and final cache state for strides of
+  1,2,3,4.
+  - Stride 1: sum, misses/hits, final cache state
+  - Stride 2: sum, misses/hits, final cache state
+  - Stride 3: sum, misses/hits, final cache state
+  - Stride 4: sum, misses/hits, final cache state
+
+
+PROBLEM 4 (OPTIONAL): Profiler
+==============================
+
+  This problem demonstrates the utility of a performance *profiler* to
+  help locate "hot spots" in code which take most of the run time
+  associated with it.
+
+  Change into the directory `warsim' that is part of the HW code
+  distribution.  The code contained within it implements a simple
+  simulation of the card game War.  The details of the game are not
+  important except that the program simulates playing of the game then
+  reports statistics on it.
+
+  First compile the program by using the provided Makefile.
+  ,----
+  | > make
+  | gcc -Og -g -pg -no-pie -c libwar.c
+  | gcc -Og -g -pg -no-pie -c libcardlist.c
+  | gcc -Og -g -pg -no-pie -o warsim warsim.c libwar.o libcardlist.o
+  `----
+  Notice that the option `-pg' is passed in which will enable
+  /profiling/ of the code. The `-no-pie' option is present in case a
+  buggy version of `gcc' is present and has no significant effect.
+
+  Run the resulting `warsim' program as follows.
+
+  ,----
+  | # show usage
+  | > ./warsim
+  | usage: ./warsim cardfile ngames [logfile]
+  |
+  | # simulate 10 games
+  | > ./warsim full.deck 10
+  | ----------------------
+  | Final stats
+  |   0.60 P1 Win Ratio
+  | 408.50 Avg battles per game
+  |  30.30 Avg wars per game
+  |
+  | # simulate 100 games
+  | > ./warsim full.deck 100
+  | ----------------------
+  | Final stats
+  |   0.54 P1 Win Ratio
+  | 301.56 Avg battles per game
+  |  22.94 Avg wars per game
+  |
+  | # simulate 2000 games
+  | > ./warsim full.deck 2000
+  | ----------------------
+  | Final stats
+  |   0.54 P1 Win Ratio
+  | 298.48 Avg battles per game
+  |  22.79 Avg wars per game
+  `----
+
+  This last run might take a few seconds as 2000 games are simulated.
+
+  After the runs are finished, the file `gmon.out' appears. This is an
+  output file that is generated on running programs with profiling
+  enabled.
+  ,----
+  | > ls gmon.out
+  | gmon.out
+  | > file gmon.out
+  | gmon.out: GNU prof performance data - version 1
+  `----
+
+  The contents of the file are binary and must be interpreted by the
+  program `gprof'.  Use the `-b' option to show "brief" output and pass
+  in the name of the program that was run.
+  ,----
+  | > gprof -b warsim
+  | Flat profile:
+  |
+  | Each sample counts as 0.01 seconds.
+  |   %   cumulative   self              self     total
+  |  time   seconds   seconds    calls  ms/call  ms/call  name
+  |  50.11      0.06     0.06  2387860     0.00     0.00  print_list
+  |  25.06      0.09     0.03 32507650     0.00     0.00  card2str
+  |   8.35      0.10     0.01   596965     0.00     0.00  end_battle
+  |   8.35      0.11     0.01     4000     0.00     0.00  new_stack
+  |   8.35      0.12     0.01       52     0.19     0.19  str2card
+  |   0.00      0.12     0.00  8073378     0.00     0.00  stack_empty
+  |   0.00      0.12     0.00  6656812     0.00     0.00  queue_empty
+  |   0.00      0.12     0.00  3944508     0.00     0.00  stack_top
+  |   0.00      0.12     0.00  1675522     0.00     0.00  queue_add
+  |   0.00      0.12     0.00  1675522     0.00     0.00  queue_remove
+  |   0.00      0.12     0.00  1571470     0.00     0.00  queue_front
+  |   0.00      0.12     0.00  1465470     0.00     0.00  stack_pop
+  |   0.00      0.12     0.00  1465470     0.00     0.00  stack_push
+  |   0.00      0.12     0.00   596965     0.00     0.00  start_battle
+  |   0.00      0.12     0.00     6001     0.00     0.00  new_queue
+  |   0.00      0.12     0.00     6001     0.00     0.00  queue_free
+  |   0.00      0.12     0.00     4000     0.00     0.00  stack_free
+  |   0.00      0.12     0.00     2000     0.00     0.00  deal2
+  |   0.00      0.12     0.00     2000     0.00     0.06  playwar
+  |   0.00      0.12     0.00     2000     0.00     0.00  queue_copy
+  |   0.00      0.12     0.00     2000     0.00     0.00  queue_rotate
+  |   0.00      0.12     0.00        1     0.00    10.02  read_deck
+  | ...
+  `----
+
+  The first part of the output shows a breakdown of how much time was
+  spent in each function associated the most recent run of the program.
+
+  Analyze this breakdown and make suggestions as to where optimization
+  effort might best be spent to increase the speed of warsim.

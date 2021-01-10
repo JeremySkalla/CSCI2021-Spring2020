@@ -1,0 +1,530 @@
+#+TITLE: Tests for loadfunc
+#+TESTY: PREFIX="loadfunc"
+#+TESTY: USE_VALGRIND=1
+
+* return_five
+Runs on somefuncs.o, print out bytes of the return_five function.
+#+TESTY: program='./loadfunc test-input/somefuncs.o return_five'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'return_five'
+- 13 symbol index
+- 0x0 value
+- 11 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'return_five'
+   0: 55 48 89 e5 b8 05 00 00 
+   8: 00 5d c3 
+#+END_SRC
+
+# * Rerun with Valgrind 
+# #+TESTY: use_valgrind=1
+# #+TESTY: skipdiff=1
+# #+TESTY_RERUN:
+
+* my_pow
+Runs on somefuncs.o, print out bytes of the my_pow function.
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o my_pow'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'my_pow'
+- 15 symbol index
+- 0xb value
+- 53 size
+- 1 section index
+- 11 offset in .text of start of function
+Bytes of function 'my_pow'
+   0: 55 48 89 e5 89 7d ec 89 
+   8: 75 e8 c7 45 f8 01 00 00 
+  10: 00 c7 45 fc 00 00 00 00 
+  18: eb 0e 8b 45 f8 0f af 45 
+  20: ec 89 45 f8 83 45 fc 01 
+  28: 8b 45 fc 3b 45 e8 7c ea 
+  30: 8b 45 f8 5d c3 
+#+END_SRC
+
+* triple
+Runs on somefuncs.o, print out bytes of the triple function.
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o triple'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'triple'
+- 17 symbol index
+- 0x40 value
+- 29 size
+- 1 section index
+- 64 offset in .text of start of function
+Bytes of function 'triple'
+   0: 55 48 89 e5 48 89 7d f8 
+   8: 48 8b 45 f8 8b 10 89 d0 
+  10: 01 c0 01 c2 48 8b 45 f8 
+  18: 89 10 90 5d c3 
+#+END_SRC
+
+* quintuple
+Runs on morefuncs.o, print out bytes of the quintuple function.
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o quintuple'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'quintuple'
+- 15 symbol index
+- 0x0 value
+- 8 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'quintuple'
+   0: 8b 07 8d 04 80 89 07 c3 
+#+END_SRC
+
+* sum10
+Runs on morefuncs.o, print out bytes of the sum10 function.
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o sum10'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'sum10'
+- 16 symbol index
+- 0x8 value
+- 25 size
+- 1 section index
+- 8 offset in .text of start of function
+Bytes of function 'sum10'
+   0: b8 01 00 00 00 ba 00 00 
+   8: 00 00 83 f8 0a 7f 07 01 
+  10: c2 83 c0 01 eb f4 89 d0 
+  18: c3 
+#+END_SRC
+
+
+* modulo
+Runs on morefuncs.o, print out bytes of the modulo function.
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o modulo'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'modulo'
+- 17 symbol index
+- 0x21 value
+- 8 size
+- 1 section index
+- 33 offset in .text of start of function
+Bytes of function 'modulo'
+   0: 89 f8 99 f7 fe 89 d0 c3 
+#+END_SRC
+
+* main
+Runs on globals, print out bytes of the main function.
+
+#+TESTY: program='./loadfunc test-input/globals main'
+#+BEGIN_SRC text
+.text section
+- 13 section index
+- 4160 bytes offset from start of file
+- 0x1040 preferred virtual address for .text
+.symtab section
+- 26 section index
+- 12504 bytes offset from start of file
+- 1680 bytes total size
+- 24 bytes per entry
+- 70 entries
+Found Function 'main'
+- 65 symbol index
+- 0x1139 value
+- 173 size
+- 13 section index
+- 249 offset in .text of start of function
+Bytes of function 'main'
+   0: 55 48 89 e5 48 83 ec 10 
+   8: 89 7d fc 48 89 75 f0 48 
+  10: 8d 35 f1 2e 00 00 48 8d 
+  18: 3d ae 0e 00 00 b8 00 00 
+  20: 00 00 e8 d0 fe ff ff 48 
+  28: 8d 35 f9 2e 00 00 48 8d 
+  30: 3d a3 0e 00 00 b8 00 00 
+  38: 00 00 e8 b8 fe ff ff 48 
+  40: 8d 35 21 2f 00 00 48 8d 
+  48: 3d 98 0e 00 00 b8 00 00 
+  50: 00 00 e8 a0 fe ff ff 8b 
+  58: 05 1a 2f 00 00 89 c6 48 
+  60: 8d 3d 8c 0e 00 00 b8 00 
+  68: 00 00 00 e8 87 fe ff ff 
+  70: 8b 05 05 2f 00 00 89 c6 
+  78: 48 8d 3d 7d 0e 00 00 b8 
+  80: 00 00 00 00 e8 6e fe ff 
+  88: ff 48 8b 05 ef 2e 00 00 
+  90: 66 48 0f 6e c0 48 8d 3d 
+  98: 6a 0e 00 00 b8 01 00 00 
+  a0: 00 e8 51 fe ff ff b8 00 
+  a8: 00 00 00 c9 c3 
+#+END_SRC
+
+
+* Not Elf File: gettysburg.txt
+Checks that non-ELF files are correctly identified.
+
+#+TESTY: program='./loadfunc test-input/gettysburg.txt main'
+#+BEGIN_SRC text
+ERROR: Magic bytes wrong, this is not an ELF file
+#+END_SRC
+
+* Not Elf File: somefuncs.c
+Checks that non-ELF files are correctly identified.
+
+#+TESTY: program='./loadfunc test-input/somefuncs.c return_five'
+#+BEGIN_SRC text
+ERROR: Magic bytes wrong, this is not an ELF file
+#+END_SRC
+
+* No Symbol Table
+Checks that program errors out if there is no symbol table present.
+
+#+TESTY: program='./loadfunc test-input/naked_globals main'
+#+BEGIN_SRC text
+ERROR: Couldn't find symbol table
+#+END_SRC
+
+
+* No Symbol not_there
+Checks that program errors out if the function symbol 'not_there'
+requested does not exist.
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o not_there'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+ERROR: Function 'not_there' not found
+#+END_SRC
+
+* No Symbol main
+Checks that program errors out if the function symbol 'main' requested
+does not exist.
+
+#+TESTY: program='./loadfunc test-input/somefuncs.o main'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+ERROR: Function 'main' not found
+#+END_SRC
+
+* No Symbol triple
+Checks that program errors out if the function symbol 'triple' requested
+does not exist.
+
+#+TESTY: program='./loadfunc test-input/morefuncs.o triple'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 18 section index
+- 1072 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+ERROR: Function 'triple' not found
+#+END_SRC
+
+
+* int1 not a function
+Runs on file 'globals', should report that 'int1' is not a function
+
+#+TESTY: program='./loadfunc test-input/globals int1'
+#+BEGIN_SRC text
+.text section
+- 13 section index
+- 4160 bytes offset from start of file
+- 0x1040 preferred virtual address for .text
+.symtab section
+- 26 section index
+- 12504 bytes offset from start of file
+- 1680 bytes total size
+- 24 bytes per entry
+- 70 entries
+Found Function 'int1'
+- 61 symbol index
+- 0x40b0 value
+- 4 size
+- 23 section index
+ERROR: 'int1' in section 23, not in .text section 13
+#+END_SRC
+
+* string3 not a function
+Runs on file 'globals', should report that 'string3' is not a function
+
+#+TESTY: program='./loadfunc test-input/globals string3'
+#+BEGIN_SRC text
+.text section
+- 13 section index
+- 4160 bytes offset from start of file
+- 0x1040 preferred virtual address for .text
+.symtab section
+- 26 section index
+- 12504 bytes offset from start of file
+- 1680 bytes total size
+- 24 bytes per entry
+- 70 entries
+Found Function 'string3'
+- 52 symbol index
+- 0x40a0 value
+- 16 size
+- 23 section index
+ERROR: 'string3' in section 23, not in .text section 13
+#+END_SRC
+
+* print_greeting
+Runs on greet_funcs.o, print out bytes of the 'pring_greeting()'
+function.
+
+#+TESTY: program='./loadfunc test-input/greet_funcs.o print_greeting'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 17 section index
+- 1536 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'print_greeting'
+- 15 symbol index
+- 0x0 value
+- 19 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'print_greeting'
+   0: 55 48 89 e5 48 8d 3d 00 
+   8: 00 00 00 e8 00 00 00 00 
+  10: 90 5d c3 
+#+END_SRC
+
+
+* coins main
+Runs on coins_main, print out bytes of the main function.
+
+#+TESTY: program='./loadfunc test-input/coins_main main'
+#+BEGIN_SRC text
+.text section
+- 13 section index
+- 4208 bytes offset from start of file
+- 0x1070 preferred virtual address for .text
+.symtab section
+- 32 section index
+- 17048 bytes offset from start of file
+- 1824 bytes total size
+- 24 bytes per entry
+- 76 entries
+Found Function 'main'
+- 71 symbol index
+- 0x1201 value
+- 300 size
+- 13 section index
+- 401 offset in .text of start of function
+Bytes of function 'main'
+   0: 55 53 48 83 ec 18 64 48 
+   8: 8b 04 25 28 00 00 00 48 
+  10: 89 44 24 08 31 c0 83 ff 
+  18: 01 0f 8e cc 00 00 00 48 
+  20: 8b 7e 08 ba 0a 00 00 00 
+  28: be 00 00 00 00 e8 2d fe 
+  30: ff ff 48 89 c5 48 8d 74 
+  38: 24 04 89 c7 e8 27 ff ff 
+  40: ff 89 c3 85 c0 0f 85 c2 
+  48: 00 00 00 89 ee 48 8d 3d 
+  50: c2 0d 00 00 b8 00 00 00 
+  58: 00 e8 f1 fd ff ff 0f be 
+  60: 74 24 04 48 8d 3d bc 0d 
+  68: 00 00 b8 00 00 00 00 e8 
+  70: db fd ff ff 0f be 74 24 
+  78: 05 48 8d 3d b3 0d 00 00 
+  80: b8 00 00 00 00 e8 c5 fd 
+  88: ff ff 0f be 74 24 06 48 
+  90: 8d 3d a7 0d 00 00 b8 00 
+  98: 00 00 00 e8 af fd ff ff 
+  a0: 0f be 74 24 07 48 8d 3d 
+  a8: 9d 0d 00 00 b8 00 00 00 
+  b0: 00 e8 99 fd ff ff 8b 7c 
+  b8: 24 04 e8 19 ff ff ff 89 
+  c0: c6 48 8d 3d 8d 0d 00 00 
+  c8: b8 00 00 00 00 e8 7d fd 
+  d0: ff ff 48 8b 44 24 08 64 
+  d8: 48 33 04 25 28 00 00 00 
+  e0: 75 45 89 d8 48 83 c4 18 
+  e8: 5b 5d c3 48 8b 36 48 8d 
+  f0: 3d 0e 0d 00 00 e8 55 fd 
+  f8: ff ff 48 8d 3d 6e 0d 00 
+ 100: 00 e8 29 fd ff ff bb 01 
+ 108: 00 00 00 eb c5 89 ee 48 
+ 110: 8d 3d 79 0d 00 00 b8 00 
+ 118: 00 00 00 e8 2f fd ff ff 
+ 120: bb 01 00 00 00 eb ab e8 
+ 128: 13 fd ff ff 
+#+END_SRC
+
+* total_coins
+Runs on coins_funcs.o, print out bytes of the 'total_coins' function.
+
+#+TESTY: program='./loadfunc test-input/coins_funcs.o total_coins'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1328 bytes offset from start of file
+- 360 bytes total size
+- 24 bytes per entry
+- 15 entries
+Found Function 'total_coins'
+- 14 symbol index
+- 0x129 value
+- 91 size
+- 1 section index
+- 297 offset in .text of start of function
+Bytes of function 'total_coins'
+   0: 55 48 89 e5 89 7d ec c7 
+   8: 45 fc 00 00 00 00 0f b6 
+  10: 45 ec 0f be d0 89 d0 c1 
+  18: e0 02 01 d0 8d 14 85 00 
+  20: 00 00 00 01 d0 01 45 fc 
+  28: 0f b6 45 ed 0f be d0 89 
+  30: d0 c1 e0 02 01 d0 01 c0 
+  38: 01 45 fc 0f b6 45 ee 0f 
+  40: be d0 89 d0 c1 e0 02 01 
+  48: d0 01 45 fc 0f b6 45 ef 
+  50: 0f be c0 01 45 fc 8b 45 
+  58: fc 5d c3 
+#+END_SRC
+
+* set_coins
+Runs on coins_main , print out bytes of the 'set_coins' function.
+
+#+TESTY: program='./loadfunc test-input/coins_main set_coins'
+#+BEGIN_SRC text
+.text section
+- 13 section index
+- 4208 bytes offset from start of file
+- 0x1070 preferred virtual address for .text
+.symtab section
+- 32 section index
+- 17048 bytes offset from start of file
+- 1824 bytes total size
+- 24 bytes per entry
+- 76 entries
+Found Function 'set_coins'
+- 66 symbol index
+- 0x1169 value
+- 112 size
+- 13 section index
+- 249 offset in .text of start of function
+Bytes of function 'set_coins'
+   0: 83 ff 63 77 65 48 63 c7 
+   8: 48 69 c0 1f 85 eb 51 48 
+  10: c1 f8 23 89 fa c1 fa 1f 
+  18: 29 d0 88 06 8d 04 80 8d 
+  20: 04 80 29 c7 48 63 c7 48 
+  28: 69 c0 67 66 66 66 48 c1 
+  30: f8 22 89 fa c1 fa 1f 29 
+  38: d0 88 46 01 8d 04 80 01 
+  40: c0 29 c7 48 63 c7 48 69 
+  48: c0 67 66 66 66 48 c1 f8 
+  50: 21 89 fa c1 fa 1f 29 d0 
+  58: 88 46 02 8d 04 80 29 c7 
+  60: 40 88 7e 03 b8 00 00 00 
+  68: 00 c3 b8 01 00 00 00 c3 
+#+END_SRC
+
+* coins_funcs missing
+Runs on coins_funcs.o, should report 'missing_func' is not present
+
+#+TESTY: program='./loadfunc test-input/coins_funcs.o missing_func'
+#+BEGIN_SRC text
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 16 section index
+- 1328 bytes offset from start of file
+- 360 bytes total size
+- 24 bytes per entry
+- 15 entries
+ERROR: Function 'missing_func' not found
+#+END_SRC

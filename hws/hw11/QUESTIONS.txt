@@ -1,0 +1,148 @@
+                           _________________
+
+                            HW 11 QUESTIONS
+                           _________________
+
+
+- Name: Jeremy Skalla
+- NetID: skall034
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+Note on Experimentation: Run on atlas
+=====================================
+
+  As has been the case in the past, timing execution of code is always
+  influenced by the specific machine the code is run on. While you are
+  free to run the benchmark codes anywhere on HWs, TAs will be familiar
+  with the answers for runs on atlas.cselabs.umn.edu.  For the most
+  consistent results, run the codes there.
+
+
+PROBLEM 1: colmins_main.c
+=========================
+
+(A) Timing
+~~~~~~~~~~
+
+  Compile and run the provided `colmins_main' program as indicated
+  below.
+
+  ,----
+  | > make
+  | gcc -Wall -g -Og -c colmins_main.c
+  | gcc -Wall -g -Og -c colmins_funcs.c
+  | gcc -Wall -g -Og -c matvec_util.c
+  | gcc -Wall -g -Og -o colmins_main colmins_main.o colmins_funcs.o matvec_util.o
+  |
+  | > ./colmins_main 8000 16000
+  `----
+
+  Notice that the size of the matrix being used is quite large: 8000
+  rows by 16000 columns. You may time other sizes but 8000x16000 is
+  usually large enough to get beyond obvious cache effects on most
+  machines.
+
+  Run the program several times to ensure that you get a good sense of
+  what it's normal behavior is like: there should be timing differences
+  between the different functions reported on.
+
+  Paste the timing results produced below for `./colmins_main 8000
+  16000'
+
+  col_mins1 CPU usage: 3.5697e+00 sec
+  col_mins2 CPU usage: 3.3106e+00 sec
+  col_mins3 CPU usage: 3.2519e+00 sec
+  col_mins4 CPU usage: 9.8265e-01 sec
+  col_mins5 CPU usage: 4.0712e-01 sec
+
+  (I used atlas for this)
+
+
+(B) Tricks
+~~~~~~~~~~
+
+  Examine the source code for `colmins_main.c'.  Identify the technique
+  that is used to avoid a large amount of repeated code to time the
+  multiple functions.
+
+  table of mins for easier access, reducing time.
+
+
+Problem 2: Comparisons in colmins_funcs.c
+=========================================
+
+(A) col_mins1 baseline
+~~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the `col_mins1' function in `colmins_funcs.c' and describe the
+  basic approach it uses to solve the problem of finding the minimum of
+  each column of a matrix.
+  - What pattern of access is used? Is this advantageous for the layout
+    of the matrix? It's using col-row pattern, which is not advantageous, since
+    c is a row-major language
+  - What local variables are used versus main memory gets/sets?
+  there's no local variable used, it just uses repeated memory references
+
+
+(B) col_mins2 Comparison
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the differences between `col_mins1' and `col_mins2'.
+  Particularly comment on
+  - Any differences in memory access pattern: None
+  - Any differences in use of local variables/main memory: Uses one a local variable
+  for an two MGET operations instead of re-referencing it every time
+  - Any differences in speed: About .25 seconds on atlas, limited use
+
+
+(C) col_mins3 Comparison
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  `col_mins3' implements an optimization called loop unrolling.  In this
+  technique, rather than iterate by single increments, larger steps are
+  taken. Since each iteration uses multiple local variables to store
+  partial results that must eventually be combined. All this is meant to
+  allow the processor to execute more instructions in sequence before
+  looping back which may enable more efficient pipelined and superscalar
+  operations.
+
+  Examine the differences between `col_mins2' and `col_mins3'.
+  Particularly comment on
+  - Any differences in memory access pattern: Using unrolling x4
+  - Any differences in use of local variables/main memory: Not anything besides
+  just more local variables because necessary for unrolling
+  - Any differences in speed that might be due to the new optimizations: .05 seconds
+  on atlas, almost no use
+
+
+(D) col_mins4 Comparison
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  `col_mins4' also loop unrolling but in a different way than
+  `col_mins3'.
+
+  Examine the differences between `col_mins3' and `col_mins4'.
+  Particularly comment on
+  - What loops are "unrolled" in each and how does this affect the
+    remaining code? 3 unrolls the inner column loop, 4 unrolls the outer row loop
+  - Any differences in memory access pattern: same as others but multiple columns
+  in the same row are used
+  - Any differences in use of local variables/main memory: None
+  - Any differences in speed that might be due to the new optimizations: Major improvement
+  over 2 seconds faster
+
+
+(E) col_mins5 Comparison: The Real Lesson
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  `col_mins5' is inherently different than all of the other routines.
+  Examine its structure carefully and ensure that you understand it as
+  it may prove useful in an assignment.  Particularly comment on
+  - Any differences in memory access pattern from the others: Row first, hits cache more
+  instead of columns, big difference, no unrolling
+  - Any differences in use of local variables/main memory: only uses one for an MGET
+  - Any differences in speed that might be due to the new optimizations: halfs the time
+  of 5, and with much less code

@@ -1,0 +1,15 @@
+==76371== Memcheck, a memory error detector
+==76371== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==76371== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==76371== Command: ./graph_file int test-results/21nums.dat 7
+==76371== Parent PID: 76370
+==76371== 
+==76371== 
+==76371== HEAP SUMMARY:
+==76371==     in use at exit: 0 bytes in 0 blocks
+==76371==   total heap usage: 3 allocs, 3 frees, 8,829 bytes allocated
+==76371== 
+==76371== All heap blocks were freed -- no leaks are possible
+==76371== 
+==76371== For counts of detected and suppressed errors, rerun with: -v
+==76371== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

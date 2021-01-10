@@ -1,0 +1,33 @@
+{
+    // Tests whether the set_tod_from_secs() function
+    // returns an error if passed an out-of-range
+    // seconds. Should return 1 and not change the tod.
+    int SECS = 90000;           // arg to set_tod()
+    tod_t tod = {
+      .hours   = -3,
+      .minutes = -5,
+      .seconds = -7,
+      .ispm    = -1,
+    };                          // SHOULD NOT CHANGE
+    TIME_OF_DAY_SEC  = -1;      // should stay -1
+    CLOCK_DISPLAY_PORT = -1;    // should stay -1
+
+    int ret = set_tod_from_secs( SECS, &tod );
+
+    printf("returned: %d\n",ret);
+    test_print_tod( tod );
+    printf("TIME_OF_DAY_SEC: %d\n",TIME_OF_DAY_SEC);
+    printf("CLOCK_DISPLAY_PORT: ");
+    showbits(CLOCK_DISPLAY_PORT);
+    printf("\n");
+
+}
+returned: 1
+tod = {
+  .hours   = -3,
+  .minutes = -5,
+  .seconds = -7,
+  .ispm    = -1,
+}
+TIME_OF_DAY_SEC: -1
+CLOCK_DISPLAY_PORT: 11111111 11111111 11111111 11111111 

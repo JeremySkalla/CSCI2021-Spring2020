@@ -1,0 +1,31 @@
+DEMO DATA 4
+===========
+length: 50
+min: 13
+max: 996
+range: 983
+max_height: 18
+units_per_height: 54.61
+     +----+----+----+----+----+----+----+----+----+----
+996 |                X                                 
+941 |                X              X                  
+886 |       X        X X            X                  
+832 |       X X      X X            X                X 
+777 |  X    X X   X  XXX    X       X   XXX          XX
+722 |  XX   X X   X  XXX    X       X   XXX          XX
+668 |  XX   X X   X  XXX    X      XX  XXXX    X   X XX
+613 |  XX   X X  XX  XXX    X      XX  XXXX    XX  X XX
+559 |  XX   XXX  XX  XXX XX X      XX  XXXX  X XX  X XX
+504 |  XX   XXX  XX  XXX XX X      XXX XXXX XX XX  X XX
+449 |  XX X XXX XXXX XXX XX X   X  XXX XXXX XX XX  X XX
+395 | XXX X XXX XXXX XXX XX X  XXX XXX XXXXXXXXXX  X XX
+340 | XXX X XXX XXXXXXXXXXX X  XXX XXXXXXXXXXXXXXX X XX
+286 | XXX X XXX XXXXXXXXXXX X XXXX XXXXXXXXXXXXXXX X XX
+231 | XXX X XXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXX XX
+176 | XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXXXXX
+122 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 67 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 13 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----
+     0    5    10   15   20   25   30   35   40   45   
+

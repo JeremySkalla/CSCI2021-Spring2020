@@ -1,0 +1,16 @@
+Reading text format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 5
+units_per_height: 2.00
+     +----+----+
+ 10 |          X
+  8 |        XXX
+  6 |      XXXXX
+  4 |    XXXXXXX
+  2 |  XXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   

@@ -1,0 +1,16 @@
+==3623== Memcheck, a memory error detector
+==3623== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3623== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==3623== Command: ./clock_main 66091
+==3623== Parent PID: 3622
+==3623== 
+==3623== error calling PR_SET_PTRACER, vgdb might block
+==3623== 
+==3623== HEAP SUMMARY:
+==3623==     in use at exit: 0 bytes in 0 blocks
+==3623==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==3623== 
+==3623== All heap blocks were freed -- no leaks are possible
+==3623== 
+==3623== For counts of detected and suppressed errors, rerun with: -v
+==3623== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,27 @@
+TIME_OF_DAY_SEC set to: 12345
+set_tod_from_secs( 12345, &tod );
+tod is {       
+  .hours   = 3
+  .minutes = 25
+  .seconds = 45
+  .ispm    = 0
+}              
+Simulated time is: 03 : 25 : 45 am
+
+Checking results for display bits
+set_display_bits_from_tod(tod, &state);
+
+state is:
+bits:  00010000 00010011 11101101 11101101 
+
+Running clock_update()
+
+CLOCK_DISPLAY_PORT is:
+bits:  00010000 00010011 11101101 11101101 
+
+Clock Display:
+         ~~   ~~   ~~          
+           |o   | |            
+         ~~   ~~   ~~          
+AM         |o|       |         
+         ~~   ~~   ~~          

@@ -1,0 +1,189 @@
+                           _________________
+
+                            HW 05 QUESTIONS
+                           _________________
+
+
+- Name: Jeremy Skalla
+- NetID: skall034
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+PROBLEM 1: C Bit Operations in Collatz
+======================================
+
+  Examine the program collatz.c which performs a similar computation to
+  a HW01 code except that this version uses bitwise operations in the
+  function collatz_bitwise().  Examine the locations labeled with
+  comments and shown below and describe the equivalent "normal"
+  arithmetic that is happening at each postion.
+
+
+A
+~
+
+  ,----
+  |   int neg_mask = 0x1 << 31;     // A
+  |   if(n & neg_mask){             // A
+  |     return -1;
+  |   }
+  `----
+
+  The bits for 0x1 (hexidecimal) are shifting left 31 times, giving us a decimal value
+  of -2147483648, and if you enter a negative number, it'll return -1
+
+B
+~
+
+  ,----
+  |     if(n & 0x1){                // B
+  |       ...
+  |     }
+  |     else{
+  |       ...
+  |     }
+  `----
+
+  This is essentially saying, if it's odd, run the if statement, else if it's even.
+  This is the case because 0x1 is 0000 0001 and if n is XXXX XXX1, then it's odd, and the
+  bitwise operation will return not 0, which will trigger the if statement
+
+C
+~
+
+  ,----
+  |       n = ((n << 2) - n) + 1;   // C
+  `----
+
+  This says n is now changing to n shifted left 2 bits minus original n + 1
+  For example, if n = 5, then after this, it'll be 16. Realistically, this is just
+  saying n * 4 - n + 1 which can be simplified down to n * 3 + 1 (but you can't
+  multiply by 3 in bitwise).
+  TRICK: x * 2^n for the bitwise equation "x << n"
+
+D
+~
+
+  ,----
+  |       n = n >> 1;               // D
+  `----
+
+  This says n is going to change to n shifted left 2 bits, aka n / 2 (integer division)
+  TRICK: x / (2^n) for the bitwise equation "x >> n"
+
+PROBLEM 2: C Union and Float Bits
+=================================
+
+A
+~
+
+  Compile and run union.c to see what floating point value is printed by
+  the lines.
+  ,----
+  |   flint.in = 0xC378C000;        // assign an int value
+  |   printf("%.4f\n",flint.fl);    // print as a float value
+  `----
+  Show the float value and explain why it has a well-defined value
+  despite no assignment of `flint.fl = ...;' appearing.
+
+  The entire union only occupies 4 bytes, so fl and ch and in all have the same hex value
+  but it's going to be different because of how chars and ints and floats work
+
+B
+~
+
+  The subsequent loop
+  ,----
+  |   flint.in = 0xC378C000;        // assign an int value
+  |   ...
+  |   for(int i=0; i<4; i++){       // print chars individually
+  |     unsigned char c = flint.ch[i];
+  |     printf("%d: %02x '%c'\n", i,c,c);
+  |   }
+  `----
+  prints values of the bytes associated with `flint' as chars and
+  hexadecimal numbers.  Show its output and explain why the hex digits
+  appear in a different order from the constant flint is set to
+  initially.
+
+  0 will be printed if the value is less than 2 digits, which it is (??? TODO)
+
+
+C
+~
+
+  The lines
+  ,----
+  | int mask = ~(0x80000000);
+  | flint.in = flint.in & mask;
+  | printf("%.4f\n",flint.fl);
+  `----
+  modify flint again. Show the resulting floating point output and
+  describe why it has the shown value.
+
+  1.069068e-38 is the floating point value we get, since %e is the format specifier
+  for scientific notation. It converts "Bit\0" to a float, which is apparently
+  that tiny number
+
+PROBLEM 3: GDB
+==============
+
+A debug_scramble.c
+~~~~~~~~~~~~~~~~~~
+
+  The file debug_scramble.c has a short problem which requires the
+  correct number to be given as a command line argument. An array is
+  filled with values and then scrambled. The command line must
+  correspond to the "positive" response. Due to the array scrambling it
+  is not apparent from the source code which array location contains the
+  positive response.
+
+  Use the debugger to determine the location the positive response.  For
+  each of the steps below, write the commands to issue to do the items
+  listed.
+  1. Compile debug_scramble.c with debug symbols turned on
+  gcc -g debug_scramble.c
+  2. Start gdb with the resulting program
+  gdb ./a.out
+  3. Set the arguments of the program to just 0
+  set args 0
+  4. Set a breakpoint at a line in debug_scramble.c after the scramble
+     loop
+  break debug_scramble.c:30
+  5. Run the program
+  run
+  6. Print out the array after stopping at the breakpoint
+  print arr
+  7. Locate the positive response (??? TODO)
+  8. Change the program arguments so that it is the correct index (??? TODO)
+  9. Re-run the program and continue to the end
+  run
+  continue
+
+  OR
+
+  disable 1
+  run
+
+
+B debug_long.c
+~~~~~~~~~~~~~~
+
+  The file debug_long.c has another short debugging problem.  It
+  requires an input string which is interpreted similarly to a
+  demonstration code at the top of code.  The correct input will elicit
+  the affirmative response.
+
+  To determine the correct input take the following approach.
+  1. Break after setting the variable `lng' to its large, mysterious
+     value
+  break debug_long.c:29
+  2. Print the bytes of long NOT as a number but interpreted as an array
+     of characters (string). This can be done in `gdb' by coercing the
+     types as in:
+     ,----
+     | gdb> print (char []) varname
+     `----
+  3. This should shed light on the correct input.

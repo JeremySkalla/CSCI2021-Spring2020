@@ -1,0 +1,986 @@
+#+TITLE: Problem 2 print_graph() in graph_demo.c / graph_file.c
+#+TESTY: PREFIX="prob2"
+
+* graph_demo 1 calls print_graph() 
+Run 'graph_demo 1' to produce demo graph 1 using print_graph()
+
+#+TESTY: program='./graph_demo 1'
+#+BEGIN_SRC sh
+DEMO DATA 1
+===========
+length: 22
+min: 0
+max: 20
+range: 20
+max_height: 10
+units_per_height: 2.00
+     +----+----+----+----+-
+ 20 |                    X 
+ 18 |                   XX 
+ 16 |                  XXX 
+ 14 |                 XXXX 
+ 12 |                XXXXX 
+ 10 |          X    XXXXXXX
+  8 |        XXX   XXXXXXXX
+  6 |      XXXXX  XXXXXXXXX
+  4 |    XXXXXXX XXXXXXXXXX
+  2 |  XXXXXXXXXXXXXXXXXXXX
+  0 |XXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+-
+     0    5    10   15   20   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_demo 2 of print_graph() 
+Run graph_demo to produce demo graph 2
+
+#+TESTY: program='./graph_demo 2'
+#+BEGIN_SRC sh
+DEMO DATA 2
+===========
+length: 22
+min: 0
+max: 20
+range: 20
+max_height: 20
+units_per_height: 1.00
+     +----+----+----+----+-
+ 20 |                    X 
+ 19 |                    X 
+ 18 |                   XX 
+ 17 |                   XX 
+ 16 |                  XXX 
+ 15 |                  XXX 
+ 14 |                 XXXX 
+ 13 |                 XXXX 
+ 12 |                XXXXX 
+ 11 |                XXXXX 
+ 10 |          X    XXXXXXX
+  9 |         XX    XXXXXXX
+  8 |        XXX   XXXXXXXX
+  7 |       XXXX   XXXXXXXX
+  6 |      XXXXX  XXXXXXXXX
+  5 |     XXXXXX  XXXXXXXXX
+  4 |    XXXXXXX XXXXXXXXXX
+  3 |   XXXXXXXX XXXXXXXXXX
+  2 |  XXXXXXXXXXXXXXXXXXXX
+  1 | XXXXXXXXXXXXXXXXXXXXX
+  0 |XXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+-
+     0    5    10   15   20   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_demo 3 of print_graph() 
+Run graph_demo to produce demo graph 3
+
+#+TESTY: program='./graph_demo 3'
+#+BEGIN_SRC sh
+DEMO DATA 3
+===========
+length: 50
+min: 13
+max: 996
+range: 983
+max_height: 10
+units_per_height: 98.30
+     +----+----+----+----+----+----+----+----+----+----
+996 |                X                                 
+897 |       X        X X            X                  
+799 |  X    X X   X  X X    X       X                X 
+701 |  XX   X X   X  XXX    X      XX   XXX    X   X XX
+602 |  XX   X X  XX  XXX X  X      XX  XXXX    XX  X XX
+504 |  XX   XXX  XX  XXX XX X      XXX XXXX XX XX  X XX
+406 |  XX X XXX XXXX XXX XX X  XXX XXX XXXXXXXXXX  X XX
+307 | XXX X XXX XXXXXXXXXXX X XXXX XXXXXXXXXXXXXXX X XX
+209 | XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXX XX
+111 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 13 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----
+     0    5    10   15   20   25   30   35   40   45   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_demo 4 of print_graph() 
+Run graph_demo to produce demo graph 4
+
+#+TESTY: program='./graph_demo 4'
+#+BEGIN_SRC sh
+DEMO DATA 4
+===========
+length: 50
+min: 13
+max: 996
+range: 983
+max_height: 18
+units_per_height: 54.61
+     +----+----+----+----+----+----+----+----+----+----
+996 |                X                                 
+941 |                X              X                  
+886 |       X        X X            X                  
+832 |       X X      X X            X                X 
+777 |  X    X X   X  XXX    X       X   XXX          XX
+722 |  XX   X X   X  XXX    X       X   XXX          XX
+668 |  XX   X X   X  XXX    X      XX  XXXX    X   X XX
+613 |  XX   X X  XX  XXX    X      XX  XXXX    XX  X XX
+559 |  XX   XXX  XX  XXX XX X      XX  XXXX  X XX  X XX
+504 |  XX   XXX  XX  XXX XX X      XXX XXXX XX XX  X XX
+449 |  XX X XXX XXXX XXX XX X   X  XXX XXXX XX XX  X XX
+395 | XXX X XXX XXXX XXX XX X  XXX XXX XXXXXXXXXX  X XX
+340 | XXX X XXX XXXXXXXXXXX X  XXX XXXXXXXXXXXXXXX X XX
+286 | XXX X XXX XXXXXXXXXXX X XXXX XXXXXXXXXXXXXXX X XX
+231 | XXX X XXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXX XX
+176 | XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXXXXX
+122 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 67 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 13 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----
+     0    5    10   15   20   25   30   35   40   45   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_demo All of print_graph() 
+Run graph_demo to produce all demo graphs 
+
+#+TESTY: program='./graph_demo'
+#+BEGIN_SRC sh
+DEMO DATA 1
+===========
+length: 22
+min: 0
+max: 20
+range: 20
+max_height: 10
+units_per_height: 2.00
+     +----+----+----+----+-
+ 20 |                    X 
+ 18 |                   XX 
+ 16 |                  XXX 
+ 14 |                 XXXX 
+ 12 |                XXXXX 
+ 10 |          X    XXXXXXX
+  8 |        XXX   XXXXXXXX
+  6 |      XXXXX  XXXXXXXXX
+  4 |    XXXXXXX XXXXXXXXXX
+  2 |  XXXXXXXXXXXXXXXXXXXX
+  0 |XXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+-
+     0    5    10   15   20   
+
+DEMO DATA 2
+===========
+length: 22
+min: 0
+max: 20
+range: 20
+max_height: 20
+units_per_height: 1.00
+     +----+----+----+----+-
+ 20 |                    X 
+ 19 |                    X 
+ 18 |                   XX 
+ 17 |                   XX 
+ 16 |                  XXX 
+ 15 |                  XXX 
+ 14 |                 XXXX 
+ 13 |                 XXXX 
+ 12 |                XXXXX 
+ 11 |                XXXXX 
+ 10 |          X    XXXXXXX
+  9 |         XX    XXXXXXX
+  8 |        XXX   XXXXXXXX
+  7 |       XXXX   XXXXXXXX
+  6 |      XXXXX  XXXXXXXXX
+  5 |     XXXXXX  XXXXXXXXX
+  4 |    XXXXXXX XXXXXXXXXX
+  3 |   XXXXXXXX XXXXXXXXXX
+  2 |  XXXXXXXXXXXXXXXXXXXX
+  1 | XXXXXXXXXXXXXXXXXXXXX
+  0 |XXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+-
+     0    5    10   15   20   
+
+DEMO DATA 3
+===========
+length: 50
+min: 13
+max: 996
+range: 983
+max_height: 10
+units_per_height: 98.30
+     +----+----+----+----+----+----+----+----+----+----
+996 |                X                                 
+897 |       X        X X            X                  
+799 |  X    X X   X  X X    X       X                X 
+701 |  XX   X X   X  XXX    X      XX   XXX    X   X XX
+602 |  XX   X X  XX  XXX X  X      XX  XXXX    XX  X XX
+504 |  XX   XXX  XX  XXX XX X      XXX XXXX XX XX  X XX
+406 |  XX X XXX XXXX XXX XX X  XXX XXX XXXXXXXXXX  X XX
+307 | XXX X XXX XXXXXXXXXXX X XXXX XXXXXXXXXXXXXXX X XX
+209 | XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXX XX
+111 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 13 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----
+     0    5    10   15   20   25   30   35   40   45   
+
+DEMO DATA 4
+===========
+length: 50
+min: 13
+max: 996
+range: 983
+max_height: 18
+units_per_height: 54.61
+     +----+----+----+----+----+----+----+----+----+----
+996 |                X                                 
+941 |                X              X                  
+886 |       X        X X            X                  
+832 |       X X      X X            X                X 
+777 |  X    X X   X  XXX    X       X   XXX          XX
+722 |  XX   X X   X  XXX    X       X   XXX          XX
+668 |  XX   X X   X  XXX    X      XX  XXXX    X   X XX
+613 |  XX   X X  XX  XXX    X      XX  XXXX    XX  X XX
+559 |  XX   XXX  XX  XXX XX X      XX  XXXX  X XX  X XX
+504 |  XX   XXX  XX  XXX XX X      XXX XXXX XX XX  X XX
+449 |  XX X XXX XXXX XXX XX X   X  XXX XXXX XX XX  X XX
+395 | XXX X XXX XXXX XXX XX X  XXX XXX XXXXXXXXXX  X XX
+340 | XXX X XXX XXXXXXXXXXX X  XXX XXXXXXXXXXXXXXX X XX
+286 | XXX X XXX XXXXXXXXXXX X XXXX XXXXXXXXXXXXXXX X XX
+231 | XXX X XXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXX XX
+176 | XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXXXXX
+122 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 67 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 13 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----
+     0    5    10   15   20   25   30   35   40   45   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_file text on 0-10 height 5
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 1 2 3 4 5 6 7 8 9 10
+>> EOF
+>> echo "$NUMS" | ./save_deltas text test-results/0to10.txt
+wrote 11 ints to test-results/0to10.txt in text format
+#+END_SRC
+
+Creates a text file with 0 to 10 in it and calls graph_file on it with
+a height of 5.
+#+TESTY: program='./graph_file text test-results/0to10.txt 5'
+#+BEGIN_SRC sh
+Reading text format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 5
+units_per_height: 2.00
+     +----+----+
+ 10 |          X
+  8 |        XXX
+  6 |      XXXXX
+  4 |    XXXXXXX
+  2 |  XXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_file text on 0-10, various heights
+SETUP: Graph 0-10 with height 20
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 1 2 3 4 5 6 7 8 9 10
+>> EOF
+>> echo "$NUMS" | ./save_deltas text test-results/0to10.txt
+wrote 11 ints to test-results/0to10.txt in text format
+#+END_SRC
+
+Graph 0-10 with height 20
+#+TESTY: program='./graph_file text test-results/0to10.txt 20'
+#+BEGIN_SRC sh
+Reading text format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 20
+units_per_height: 0.50
+     +----+----+
+ 10 |          X
+  9 |         XX
+  9 |         XX
+  8 |        XXX
+  8 |        XXX
+  7 |       XXXX
+  7 |       XXXX
+  6 |      XXXXX
+  6 |      XXXXX
+  5 |     XXXXXX
+  5 |     XXXXXX
+  4 |    XXXXXXX
+  4 |    XXXXXXX
+  3 |   XXXXXXXX
+  3 |   XXXXXXXX
+  2 |  XXXXXXXXX
+  2 |  XXXXXXXXX
+  1 | XXXXXXXXXX
+  1 | XXXXXXXXXX
+  0 |XXXXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+#+TESTY: use_valgrind=0
+
+SETUP: Graph 0-10 with height 20
+#+TESTY: program='bash -v'
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 1 2 3 4 5 6 7 8 9 10
+>> EOF
+>> echo "$NUMS" | ./save_deltas text test-results/0to10.txt
+wrote 11 ints to test-results/0to10.txt in text format
+#+END_SRC
+
+Graph 0-10 with height 20
+#+TESTY: program='./graph_file text test-results/0to10.txt 7'
+#+BEGIN_SRC sh
+Reading text format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 7
+units_per_height: 1.43
+     +----+----+
+ 10 |          X
+  8 |        XXX
+  7 |       XXXX
+  5 |     XXXXXX
+  4 |    XXXXXXX
+  2 |  XXXXXXXXX
+  1 | XXXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_file text on 21 nums, various heights
+SETUP: Graph 21 nums in a file
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   20 18 14 10 7 2 3 1 5 9 5 7 7 5 5 5 7 8 3 7 4
+>> EOF
+>> echo "$NUMS" | ./save_deltas text test-results/21nums.txt
+wrote 21 ints to test-results/21nums.txt in text format
+#+END_SRC
+
+Graph 21 nums in a file with height 12
+#+TESTY: program='./graph_file text test-results/21nums.txt 12'
+#+BEGIN_SRC sh
+Reading text format
+length: 21
+min: 1
+max: 20
+range: 19
+max_height: 12
+units_per_height: 1.58
+     +----+----+----+----+
+ 20 |X                    
+ 18 |XX                   
+ 16 |XX                   
+ 15 |XX                   
+ 13 |XXX                  
+ 12 |XXX                  
+ 10 |XXXX                 
+  8 |XXXX     X       X   
+  7 |XXXXX    X XX   XX X 
+  5 |XXXXX   XXXXXXXXXX X 
+  4 |XXXXX   XXXXXXXXXX XX
+  2 |XXXXXXX XXXXXXXXXXXXX
+  1 |XXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+
+     0    5    10   15   20   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+Graph 21 nums in a file with height 7
+#+TESTY: program='./graph_file text test-results/21nums.txt 7'
+#+BEGIN_SRC sh
+Reading text format
+length: 21
+min: 1
+max: 20
+range: 19
+max_height: 7
+units_per_height: 2.71
+     +----+----+----+----+
+ 20 |X                    
+ 17 |XX                   
+ 14 |XXX                  
+ 11 |XXX                  
+  9 |XXXX     X           
+  6 |XXXXX    X XX   XX X 
+  3 |XXXXX X XXXXXXXXXXXXX
+  1 |XXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+
+     0    5    10   15   20   
+
+#+END_SRC
+* graph_file int on 0-10 height 5
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 1 2 3 4 5 6 7 8 9 10
+>> EOF
+>> echo "$NUMS" | ./save_deltas int test-results/0to10.dat
+wrote 11 ints to test-results/0to10.dat in int format
+#+END_SRC
+
+Creates a int file with 0 to 10 in it and calls graph_file on it with
+a height of 5.
+#+TESTY: program='./graph_file int test-results/0to10.dat 5'
+#+BEGIN_SRC sh
+Reading int format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 5
+units_per_height: 2.00
+     +----+----+
+ 10 |          X
+  8 |        XXX
+  6 |      XXXXX
+  4 |    XXXXXXX
+  2 |  XXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_file int on 0-10, various heights
+SETUP: Graph 0-10 with height 20
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 1 2 3 4 5 6 7 8 9 10
+>> EOF
+>> echo "$NUMS" | ./save_deltas int test-results/0to10.dat
+wrote 11 ints to test-results/0to10.dat in int format
+#+END_SRC
+
+Graph 0-10 with height 20
+#+TESTY: program='./graph_file int test-results/0to10.dat 20'
+#+BEGIN_SRC sh
+Reading int format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 20
+units_per_height: 0.50
+     +----+----+
+ 10 |          X
+  9 |         XX
+  9 |         XX
+  8 |        XXX
+  8 |        XXX
+  7 |       XXXX
+  7 |       XXXX
+  6 |      XXXXX
+  6 |      XXXXX
+  5 |     XXXXXX
+  5 |     XXXXXX
+  4 |    XXXXXXX
+  4 |    XXXXXXX
+  3 |   XXXXXXXX
+  3 |   XXXXXXXX
+  2 |  XXXXXXXXX
+  2 |  XXXXXXXXX
+  1 | XXXXXXXXXX
+  1 | XXXXXXXXXX
+  0 |XXXXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+#+TESTY: use_valgrind=0
+
+SETUP: Graph 0-10 with height 20
+#+TESTY: program='bash -v'
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 1 2 3 4 5 6 7 8 9 10
+>> EOF
+>> echo "$NUMS" | ./save_deltas int test-results/0to10.dat
+wrote 11 ints to test-results/0to10.dat in int format
+#+END_SRC
+
+Graph 0-10 with height 20
+#+TESTY: program='./graph_file int test-results/0to10.dat 7'
+#+BEGIN_SRC sh
+Reading int format
+length: 11
+min: 0
+max: 10
+range: 10
+max_height: 7
+units_per_height: 1.43
+     +----+----+
+ 10 |          X
+  8 |        XXX
+  7 |       XXXX
+  5 |     XXXXXX
+  4 |    XXXXXXX
+  2 |  XXXXXXXXX
+  1 | XXXXXXXXXX
+  0 |XXXXXXXXXXX
+     +----+----+
+     0    5    10   
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_file int on 21 nums, various heights
+SETUP: Graph 21 nums in a file
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   20 18 14 10 7 2 3 1 5 9 5 7 7 5 5 5 7 8 3 7 4
+>> EOF
+>> echo "$NUMS" | ./save_deltas int test-results/21nums.dat
+wrote 21 ints to test-results/21nums.dat in int format
+#+END_SRC
+
+Graph 21 nums in a file with height 12
+#+TESTY: program='./graph_file int test-results/21nums.dat 12'
+#+BEGIN_SRC sh
+Reading int format
+length: 21
+min: 1
+max: 20
+range: 19
+max_height: 12
+units_per_height: 1.58
+     +----+----+----+----+
+ 20 |X                    
+ 18 |XX                   
+ 16 |XX                   
+ 15 |XX                   
+ 13 |XXX                  
+ 12 |XXX                  
+ 10 |XXXX                 
+  8 |XXXX     X       X   
+  7 |XXXXX    X XX   XX X 
+  5 |XXXXX   XXXXXXXXXX X 
+  4 |XXXXX   XXXXXXXXXX XX
+  2 |XXXXXXX XXXXXXXXXXXXX
+  1 |XXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+
+     0    5    10   15   20   
+
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+Graph 21 nums in a file with height 7
+#+TESTY: program='./graph_file int test-results/21nums.dat 7'
+#+BEGIN_SRC sh
+Reading int format
+length: 21
+min: 1
+max: 20
+range: 19
+max_height: 7
+units_per_height: 2.71
+     +----+----+----+----+
+ 20 |X                    
+ 17 |XX                   
+ 14 |XXX                  
+ 11 |XXX                  
+  9 |XXXX     X           
+  6 |XXXXX    X XX   XX X 
+  3 |XXXXX X XXXXXXXXXXXXX
+  1 |XXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+
+     0    5    10   15   20   
+#+END_SRC
+* graph_file text on wave data
+SETUP: put wave data into a file
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 2 4 6 8 10 11 13 14 16 17 18 19 19 20 20 20 20 19 19 18 17 16 15 14 12 10 9 7 5 3 1 -1 -3 -5 -7 -9 -11 -12 -14 -15 -16 -17 -18 -19 -20 -20 -20 -20 -20 -19 -19 -18 -17 -15 -14 -13 -11 -9 -7 -6 -4 -2 0 2 4 6 8 10 11 13 14 16 17 18 19 19 20 20 20 20 19 19 18 17 16 15 14 12 10 9 7 5 3 1 -1 -3 -5 -7 -9 -11 -12 -14 -15 -16 -17 -18 -19 -20 -20 -20 -20 -20 -19 -19 -18 -17 -15 -14 -13 -11 -9 -7 -6 -4 -2 0
+>> EOF
+>> echo "$NUMS" | ./save_deltas text test-results/wave.txt
+wrote 127 ints to test-results/wave.txt in text format
+#+END_SRC
+
+Graph wave data in a file with height 12
+#+TESTY: program='./graph_file text test-results/wave.txt 8'
+#+BEGIN_SRC sh
+Reading text format
+length: 127
+min: -20
+max: 20
+range: 40
+max_height: 8
+units_per_height: 5.00
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+ 20 |              XXXX                                                           XXXX                                              
+ 15 |         XXXXXXXXXXXXXXX                                                XXXXXXXXXXXXXXX                                        
+ 10 |     XXXXXXXXXXXXXXXXXXXXXX                                         XXXXXXXXXXXXXXXXXXXXXX                                     
+  5 |   XXXXXXXXXXXXXXXXXXXXXXXXXXX                                    XXXXXXXXXXXXXXXXXXXXXXXXXXX                                  
+  0 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                               X
+ -5 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                          XXX
+-10 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXX
+-15 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX             XXXXXXXXXX
+-20 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+Graph wave data nums in a file with height 15
+#+TESTY: program='./graph_file text test-results/wave.txt 15'
+#+BEGIN_SRC sh
+Reading text format
+length: 127
+min: -20
+max: 20
+range: 40
+max_height: 15
+units_per_height: 2.67
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+ 20 |              XXXX                                                           XXXX                                              
+ 17 |          XXXXXXXXXXXX                                                   XXXXXXXXXXXX                                          
+ 14 |        XXXXXXXXXXXXXXXXX                                              XXXXXXXXXXXXXXXXX                                       
+ 12 |       XXXXXXXXXXXXXXXXXXX                                            XXXXXXXXXXXXXXXXXXX                                      
+  9 |     XXXXXXXXXXXXXXXXXXXXXXX                                        XXXXXXXXXXXXXXXXXXXXXXX                                    
+  6 |   XXXXXXXXXXXXXXXXXXXXXXXXXX                                     XXXXXXXXXXXXXXXXXXXXXXXXXX                                   
+  4 |  XXXXXXXXXXXXXXXXXXXXXXXXXXXX                                   XXXXXXXXXXXXXXXXXXXXXXXXXXXX                                  
+  1 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                
+ -1 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                              X
+ -4 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                           XXX
+ -6 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         XXXX
+ -9 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXX
+-12 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                  XXXXXXX
+-14 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX               XXXXXXXXX
+-17 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          XXXXXXXXXXX
+-20 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+* graph_file int on wave data
+SETUP: put wave data into a file
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   0 2 4 6 8 10 11 13 14 16 17 18 19 19 20 20 20 20 19 19 18 17 16 15 14 12 10 9 7 5 3 1 -1 -3 -5 -7 -9 -11 -12 -14 -15 -16 -17 -18 -19 -20 -20 -20 -20 -20 -19 -19 -18 -17 -15 -14 -13 -11 -9 -7 -6 -4 -2 0 2 4 6 8 10 11 13 14 16 17 18 19 19 20 20 20 20 19 19 18 17 16 15 14 12 10 9 7 5 3 1 -1 -3 -5 -7 -9 -11 -12 -14 -15 -16 -17 -18 -19 -20 -20 -20 -20 -20 -19 -19 -18 -17 -15 -14 -13 -11 -9 -7 -6 -4 -2 0
+>> EOF
+>> echo "$NUMS" | ./save_deltas int test-results/wave.dat
+wrote 127 ints to test-results/wave.dat in int format
+#+END_SRC
+
+Graph wave data in a file with height 12
+#+TESTY: program='./graph_file int test-results/wave.dat 8'
+#+BEGIN_SRC sh
+Reading int format
+length: 127
+min: -20
+max: 20
+range: 40
+max_height: 8
+units_per_height: 5.00
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+ 20 |              XXXX                                                           XXXX                                              
+ 15 |         XXXXXXXXXXXXXXX                                                XXXXXXXXXXXXXXX                                        
+ 10 |     XXXXXXXXXXXXXXXXXXXXXX                                         XXXXXXXXXXXXXXXXXXXXXX                                     
+  5 |   XXXXXXXXXXXXXXXXXXXXXXXXXXX                                    XXXXXXXXXXXXXXXXXXXXXXXXXXX                                  
+  0 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                               X
+ -5 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                          XXX
+-10 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXX
+-15 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX             XXXXXXXXXX
+-20 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+Graph wave data nums in a file with height 15
+#+TESTY: program='./graph_file int test-results/wave.dat 15'
+#+BEGIN_SRC sh
+Reading int format
+length: 127
+min: -20
+max: 20
+range: 40
+max_height: 15
+units_per_height: 2.67
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+ 20 |              XXXX                                                           XXXX                                              
+ 17 |          XXXXXXXXXXXX                                                   XXXXXXXXXXXX                                          
+ 14 |        XXXXXXXXXXXXXXXXX                                              XXXXXXXXXXXXXXXXX                                       
+ 12 |       XXXXXXXXXXXXXXXXXXX                                            XXXXXXXXXXXXXXXXXXX                                      
+  9 |     XXXXXXXXXXXXXXXXXXXXXXX                                        XXXXXXXXXXXXXXXXXXXXXXX                                    
+  6 |   XXXXXXXXXXXXXXXXXXXXXXXXXX                                     XXXXXXXXXXXXXXXXXXXXXXXXXX                                   
+  4 |  XXXXXXXXXXXXXXXXXXXXXXXXXXXX                                   XXXXXXXXXXXXXXXXXXXXXXXXXXXX                                  
+  1 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                
+ -1 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                              X
+ -4 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                           XXX
+ -6 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         XXXX
+ -9 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                     XXXXXX
+-12 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                  XXXXXXX
+-14 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX               XXXXXXXXX
+-17 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          XXXXXXXXXXX
+-20 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+-
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+* graph_file text on random data
+SETUP: put large random data into a file
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   18 9 84 26 41 90 60 61 78 17 71 38 24 83 18 53 85 79 21 36 16 14 52 95 21 34 11 42 95 71 49 7 58 77 62 84 24 14 47 8 87 94 96 17 55 75 89 73 79 94 76 37 59 66 86 92 15 7 75 30 67 7 5 42 55 39 2 75 81 26 14 59 48 59 89 25 96 77 35 36 46 26 8 47 7 15 47 98 75 67 90 5 83 85 43 90 40 94 43 84 38 75 22 13 37 77 83 13 12 9 18 67 79 39 61 83 52 72 34 63 44 5 14 51 14 49 91 24 
+>> EOF
+>> echo "$NUMS" | ./save_deltas text test-results/random.txt
+wrote 128 ints to test-results/random.txt in text format
+#+END_SRC
+
+Graph random data in a file with height 14
+#+TESTY: program='./graph_file text test-results/random.txt 14'
+#+BEGIN_SRC sh
+Reading text format
+length: 128
+min: 2
+max: 98
+range: 96
+max_height: 14
+units_per_height: 6.86
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+ 98 |                                                                                       X                                        
+ 91 |                       X    X            XX      X     X                    X          X         X                            X 
+ 84 |  X  X          X      X    X      X    XXX   X  X    XX                  X X          X  X  X X X X                          X 
+ 77 |  X  X  X    X  XX     X    X    X X    XXX   X XX    XX            X     X XX         X  X XX X X X     XX     X  X          X 
+ 70 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 63 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X X      X 
+ 56 |  X  XXXX X  X  XX     X    XX  XXXX    XXX  XXXXXX XXXX  X X      XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 50 |  X  XXXX X  X XXX    XX    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XXXX X   X  X 
+ 43 |  X  XXXX X  X XXX    XX    XXX XXXX  X XXX XXXXXXX XXXX  X X   X  XX  XXXX XX  X  X  XXXXX XXXX XXX X   XX    XX XXXX XX  X XX 
+ 36 |  X XXXXX XX X XXX X  XX   XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XX XX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXX XX  X XX 
+ 29 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 22 |  XXXXXXX XXXX XXX X  XX X XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 15 |X XXXXXXXXXXXXXXXXXXX XXXX XXXX XXXXX X XXXXXXXXXXXXXXXXX XXX  XXX XXX XXXXXXXXXXX X XXXXXX XXXXXXXXXXX XXX   XXXXXXXXXXX  X XXX
+  8 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXX
+  2 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+Graph random data in a file with height 33
+#+TESTY: program='./graph_file text test-results/random.txt 33'
+#+BEGIN_SRC sh
+Reading text format
+length: 128
+min: 2
+max: 98
+range: 96
+max_height: 33
+units_per_height: 2.91
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+ 98 |                                                                                       X                                        
+ 95 |                       X    X             X                                 X          X                                        
+ 92 |                       X    X            XX      X     X                    X          X         X                              
+ 89 |     X                 X    X            XX   X  X     X                  X X          X  X    X X                            X 
+ 86 |     X                 X    X           XXX   X  X    XX                  X X          X  X    X X                            X 
+ 83 |  X  X       X  X      X    X      X    XXX   X  X    XX                  X X          X  X XX X X X      X        X          X 
+ 80 |  X  X       X  X      X    X      X    XXX   X  X    XX            X     X X          X  X XX X X X      X        X          X 
+ 77 |  X  X  X    X  XX     X    X    X X    XXX   X XX    XX            X     X XX         X  X XX X X X     XX     X  X          X 
+ 74 |  X  X  X    X  XX     X    X    X X    XXX  XX XXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X          X 
+ 71 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 68 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 66 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X        X 
+ 63 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X X      X 
+ 60 |  X  XXXX X  X  XX     X    XX   XXX    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 57 |  X  XXXX X  X  XX     X    XX  XXXX    XXX  XXXXXX XXXX  X X      XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 54 |  X  XXXX X  X  XX     X    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 51 |  X  XXXX X  X XXX    XX    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XXXX X   X  X 
+ 48 |  X  XXXX X  X XXX    XX    XXX XXXX    XXX XXXXXXX XXXX  X X   X  XX  XXXX XX         XXXX XX X X X X   XX    XX XXXX X   X XX 
+ 45 |  X  XXXX X  X XXX    XX    XXX XXXX  X XXX XXXXXXX XXXX  X X   X  XX  XXXX XX  X  X  XXXXX XX X X X X   XX    XX XXXX X   X XX 
+ 42 |  X  XXXX X  X XXX    XX   XXXX XXXX  X XXX XXXXXXX XXXX  X X  XX  XX  XXXX XX  X  X  XXXXX XXXX XXX X   XX    XX XXXX XX  X XX 
+ 39 |  X XXXXX X  X XXX    XX   XXXX XXXX  X XXX XXXXXXX XXXX  X X  XXX XX  XXXX XX  X  X  XXXXX XXXXXXXX X   XX    XXXXXXX XX  X XX 
+ 36 |  X XXXXX XX X XXX X  XX   XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XX XX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXX XX  X XX 
+ 34 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 31 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 28 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 25 |  XXXXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 22 |  XXXXXXX XXXX XXX X  XX X XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 19 |  XXXXXXX XXXX XXXXX  XXXX XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 16 |X XXXXXXXXXXXXXXXXXXX XXXX XXXX XXXXX X XXXXXXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX   XXXXXXXXXXX  X XXX
+ 13 |X XXXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXX XXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXX X XXXXXX XXXXXXXXXXXXXXXX  XXXXXXXXXXX XXXXXX
+ 10 |X XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXX X XXXXXX XXXXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXX
+  7 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXX XXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXX
+  4 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  2 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+* graph_file int on random data
+SETUP: put large random data into a file
+#+BEGIN_SRC sh
+>> read -d '' NUMS <<EOF
+>>   18 9 84 26 41 90 60 61 78 17 71 38 24 83 18 53 85 79 21 36 16 14 52 95 21 34 11 42 95 71 49 7 58 77 62 84 24 14 47 8 87 94 96 17 55 75 89 73 79 94 76 37 59 66 86 92 15 7 75 30 67 7 5 42 55 39 2 75 81 26 14 59 48 59 89 25 96 77 35 36 46 26 8 47 7 15 47 98 75 67 90 5 83 85 43 90 40 94 43 84 38 75 22 13 37 77 83 13 12 9 18 67 79 39 61 83 52 72 34 63 44 5 14 51 14 49 91 24 
+>> EOF
+>> echo "$NUMS" | ./save_deltas int test-results/random.dat
+wrote 128 ints to test-results/random.dat in int format
+#+END_SRC
+
+Graph random data in a file with height 14
+#+TESTY: program='./graph_file int test-results/random.dat 14'
+#+BEGIN_SRC sh
+Reading int format
+length: 128
+min: 2
+max: 98
+range: 96
+max_height: 14
+units_per_height: 6.86
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+ 98 |                                                                                       X                                        
+ 91 |                       X    X            XX      X     X                    X          X         X                            X 
+ 84 |  X  X          X      X    X      X    XXX   X  X    XX                  X X          X  X  X X X X                          X 
+ 77 |  X  X  X    X  XX     X    X    X X    XXX   X XX    XX            X     X XX         X  X XX X X X     XX     X  X          X 
+ 70 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 63 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X X      X 
+ 56 |  X  XXXX X  X  XX     X    XX  XXXX    XXX  XXXXXX XXXX  X X      XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 50 |  X  XXXX X  X XXX    XX    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XXXX X   X  X 
+ 43 |  X  XXXX X  X XXX    XX    XXX XXXX  X XXX XXXXXXX XXXX  X X   X  XX  XXXX XX  X  X  XXXXX XXXX XXX X   XX    XX XXXX XX  X XX 
+ 36 |  X XXXXX XX X XXX X  XX   XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XX XX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXX XX  X XX 
+ 29 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 22 |  XXXXXXX XXXX XXX X  XX X XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 15 |X XXXXXXXXXXXXXXXXXXX XXXX XXXX XXXXX X XXXXXXXXXXXXXXXXX XXX  XXX XXX XXXXXXXXXXX X XXXXXX XXXXXXXXXXX XXX   XXXXXXXXXXX  X XXX
+  8 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXXXX XXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXX
+  2 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+
+Rerun under Valgrind.
+#+TESTY: use_valgrind=1
+#+TESTY_RERUN:
+
+Graph random data in a file with height 33
+#+TESTY: program='./graph_file int test-results/random.dat 33'
+#+BEGIN_SRC sh
+Reading int format
+length: 128
+min: 2
+max: 98
+range: 96
+max_height: 33
+units_per_height: 2.91
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+ 98 |                                                                                       X                                        
+ 95 |                       X    X             X                                 X          X                                        
+ 92 |                       X    X            XX      X     X                    X          X         X                              
+ 89 |     X                 X    X            XX   X  X     X                  X X          X  X    X X                            X 
+ 86 |     X                 X    X           XXX   X  X    XX                  X X          X  X    X X                            X 
+ 83 |  X  X       X  X      X    X      X    XXX   X  X    XX                  X X          X  X XX X X X      X        X          X 
+ 80 |  X  X       X  X      X    X      X    XXX   X  X    XX            X     X X          X  X XX X X X      X        X          X 
+ 77 |  X  X  X    X  XX     X    X    X X    XXX   X XX    XX            X     X XX         X  X XX X X X     XX     X  X          X 
+ 74 |  X  X  X    X  XX     X    X    X X    XXX  XX XXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X          X 
+ 71 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 68 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX   XX  X        XX     X XX         XX X XX X X X X   XX     X  X X        X 
+ 66 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X        X 
+ 63 |  X  X  X X  X  XX     X    XX   X X    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX  X X X      X 
+ 60 |  X  XXXX X  X  XX     X    XX   XXX    XXX  XXXXXX  XXX  X X      XX     X XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 57 |  X  XXXX X  X  XX     X    XX  XXXX    XXX  XXXXXX XXXX  X X      XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 54 |  X  XXXX X  X  XX     X    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XX X X      X 
+ 51 |  X  XXXX X  X XXX    XX    XX  XXXX    XXX XXXXXXX XXXX  X X   X  XX  X XX XX         XXXX XX X X X X   XX    XX XXXX X   X  X 
+ 48 |  X  XXXX X  X XXX    XX    XXX XXXX    XXX XXXXXXX XXXX  X X   X  XX  XXXX XX         XXXX XX X X X X   XX    XX XXXX X   X XX 
+ 45 |  X  XXXX X  X XXX    XX    XXX XXXX  X XXX XXXXXXX XXXX  X X   X  XX  XXXX XX  X  X  XXXXX XX X X X X   XX    XX XXXX X   X XX 
+ 42 |  X  XXXX X  X XXX    XX   XXXX XXXX  X XXX XXXXXXX XXXX  X X  XX  XX  XXXX XX  X  X  XXXXX XXXX XXX X   XX    XX XXXX XX  X XX 
+ 39 |  X XXXXX X  X XXX    XX   XXXX XXXX  X XXX XXXXXXX XXXX  X X  XXX XX  XXXX XX  X  X  XXXXX XXXXXXXX X   XX    XXXXXXX XX  X XX 
+ 36 |  X XXXXX XX X XXX X  XX   XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XX XX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXX XX  X XX 
+ 34 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 31 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  X X  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 28 |  X XXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XX  XXXX XXXXX  X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 25 |  XXXXXXX XX X XXX X  XX X XXXX XXXX  X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXX  XXX    XXXXXXXXXX  X XX 
+ 22 |  XXXXXXX XXXX XXX X  XX X XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 19 |  XXXXXXX XXXX XXXXX  XXXX XXXX XXXXX X XXX XXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX    XXXXXXXXXX  X XXX
+ 16 |X XXXXXXXXXXXXXXXXXXX XXXX XXXX XXXXX X XXXXXXXXXXXXXXXX  XXX  XXX XXX XXXXXXXXXXX X  XXXXX XXXXXXXXXXX XXX   XXXXXXXXXXX  X XXX
+ 13 |X XXXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXX XXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXX X XXXXXX XXXXXXXXXXXXXXXX  XXXXXXXXXXX XXXXXX
+ 10 |X XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXXXXXX XXX  XXX XXXXXXXXXXXXXXX X XXXXXX XXXXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXX
+  7 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXX XXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXX
+  4 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  2 |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+--
+     0    5    10   15   20   25   30   35   40   45   50   55   60   65   70   75   80   85   90   95   100  105  110  115  120  125  
+#+END_SRC
+

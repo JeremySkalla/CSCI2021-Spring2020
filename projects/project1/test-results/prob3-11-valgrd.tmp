@@ -1,0 +1,15 @@
+==73992== Memcheck, a memory error detector
+==73992== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==73992== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==73992== Command: ./treemap_main -echo
+==73992== Parent PID: 73991
+==73992== 
+==73992== 
+==73992== HEAP SUMMARY:
+==73992==     in use at exit: 0 bytes in 0 blocks
+==73992==   total heap usage: 14 allocs, 14 frees, 3,552 bytes allocated
+==73992== 
+==73992== All heap blocks were freed -- no leaks are possible
+==73992== 
+==73992== For counts of detected and suppressed errors, rerun with: -v
+==73992== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

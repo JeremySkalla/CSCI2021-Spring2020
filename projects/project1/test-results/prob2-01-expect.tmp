@@ -1,0 +1,23 @@
+DEMO DATA 1
+===========
+length: 22
+min: 0
+max: 20
+range: 20
+max_height: 10
+units_per_height: 2.00
+     +----+----+----+----+-
+ 20 |                    X 
+ 18 |                   XX 
+ 16 |                  XXX 
+ 14 |                 XXXX 
+ 12 |                XXXXX 
+ 10 |          X    XXXXXXX
+  8 |        XXX   XXXXXXXX
+  6 |      XXXXX  XXXXXXXXX
+  4 |    XXXXXXX XXXXXXXXXX
+  2 |  XXXXXXXXXXXXXXXXXXXX
+  0 |XXXXXXXXXXXXXXXXXXXXXX
+     +----+----+----+----+-
+     0    5    10   15   20   
+

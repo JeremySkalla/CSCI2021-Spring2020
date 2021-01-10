@@ -1,0 +1,10 @@
+insert rolf
+insert kermit
+insert fozzy
+print
+get 2
+get 7
+contains kermit
+contains scooter
+delete scooter
+exit

@@ -1,0 +1,414 @@
+TreeMap Editor
+Commands:
+  quit:            exit the program
+  print:           shows contents of the tree in reverse sorted order
+  add <key> <val>: inserts the given key/val into the tree, duplicate keys are ignored
+  get <key>:       prints FOUND if the name is in the tree, NOT FOUND otherwise
+  clear:           eliminates all key/vals from the tree
+  preorder:        prints contents of the tree in pre-order which is how it will be saved
+  save <file>:     writes the contents of the tree in pre-order to the given file
+  load <file>:     clears the current tree and loads the one in the given file
+TM> load data/big.tm
+TM> print
+        Zachary -> boy
+          Willie -> boy
+      William -> boy
+                  Wayne -> boy
+                Walter -> boy
+              Virginia -> girl
+                    Vincent -> boy
+                  Victoria -> girl
+                Tyler -> boy
+            Timothy -> boy
+              Tiffany -> girl
+          Thomas -> boy
+              Theresa -> girl
+            Terry -> boy
+              Teresa -> girl
+        Susan -> girl
+            Steven -> boy
+                Stephen -> boy
+              Stephanie -> girl
+                  Shirley -> girl
+                Sharon -> girl
+                    Sean -> boy
+                  Scott -> boy
+          Sarah -> girl
+              Sara -> girl
+            Sandra -> girl
+                    Samuel -> boy
+                  Samantha -> girl
+                Ryan -> boy
+                  Ruth -> girl
+                      Russell -> boy
+                    Roy -> boy
+                      Rose -> girl
+              Ronald -> boy
+                Roger -> boy
+    Robert -> boy
+      Richard -> boy
+          Rebecca -> girl
+            Raymond -> boy
+                  Randy -> boy
+                Ralph -> boy
+              Rachel -> girl
+                  Philip -> boy
+                Peter -> boy
+        Paul -> boy
+          Patrick -> boy
+  Patricia -> girl
+          Pamela -> girl
+              Olivia -> girl
+                Noah -> boy
+            Nicole -> girl
+        Nicholas -> boy
+          Nathan -> boy
+            Natalie -> girl
+      Nancy -> girl
+        Michelle -> girl
+    Michael -> boy
+        Melissa -> girl
+          Megan -> girl
+      Matthew -> boy
+Mary -> girl
+            Martha -> girl
+          Mark -> boy
+                Marilyn -> girl
+              Marie -> girl
+            Maria -> girl
+        Margaret -> girl
+            Madison -> girl
+              Louis -> boy
+                Lori -> girl
+                  Logan -> boy
+          Lisa -> girl
+      Linda -> girl
+                  Lawrence -> boy
+                Lauren -> girl
+              Laura -> girl
+                Larry -> boy
+                  Kyle -> boy
+            Kimberly -> girl
+                Kevin -> boy
+              Kenneth -> boy
+                  Kelly -> girl
+                    Keith -> boy
+                        Kayla -> girl
+                      Kathryn -> girl
+                Kathleen -> girl
+                  Katherine -> girl
+          Karen -> girl
+              Justin -> boy
+                Julie -> girl
+                      Julia -> girl
+                        Judy -> girl
+                    Judith -> girl
+                      Juan -> boy
+                  Joyce -> girl
+            Joshua -> boy
+        Joseph -> boy
+            Jose -> boy
+              Jordan -> boy
+          Jonathan -> boy
+            Johnny -> boy
+    John -> boy
+            Joe -> boy
+          Joan -> girl
+        Jessica -> girl
+            Jesse -> boy
+          Jerry -> boy
+            Jeremy -> boy
+      Jennifer -> girl
+          Jeffrey -> boy
+            Jean -> girl
+        Jason -> boy
+            Janice -> girl
+          Janet -> girl
+            Jane -> girl
+  James -> boy
+            Jacqueline -> girl
+          Jacob -> boy
+            Jack -> boy
+              Henry -> boy
+        Helen -> girl
+            Heather -> girl
+                Harry -> boy
+              Harold -> boy
+                Hannah -> girl
+          Gregory -> boy
+                Grace -> girl
+              Gloria -> girl
+            Gerald -> boy
+      George -> boy
+          Gary -> boy
+                Gabriel -> boy
+              Frank -> boy
+                  Frances -> girl
+                Evelyn -> girl
+                    Eugene -> boy
+                  Ethan -> boy
+            Eric -> boy
+              Emma -> girl
+        Emily -> girl
+    Elizabeth -> girl
+            Edward -> boy
+                Dylan -> boy
+              Douglas -> boy
+          Dorothy -> girl
+                Doris -> girl
+              Donna -> girl
+            Donald -> boy
+                    Diane -> girl
+                      Diana -> girl
+                  Dennis -> boy
+                    Denise -> girl
+                Debra -> girl
+              Deborah -> girl
+        David -> boy
+                Danielle -> girl
+              Daniel -> boy
+                Cynthia -> girl
+            Christopher -> boy
+              Christine -> girl
+                Christina -> girl
+                    Christian -> boy
+                  Cheryl -> girl
+          Charles -> boy
+                Catherine -> girl
+                  Carolyn -> girl
+              Carol -> girl
+                  Carl -> boy
+                    Bryan -> boy
+                      Bruce -> boy
+                        Brittany -> girl
+                Brian -> boy
+                  Brenda -> girl
+                    Brandon -> boy
+                        Bobby -> boy
+                      Billy -> boy
+                        Beverly -> girl
+            Betty -> girl
+              Benjamin -> boy
+      Barbara -> girl
+            Austin -> boy
+          Ashley -> girl
+            Arthur -> boy
+        Anthony -> boy
+            Anna -> girl
+                Ann -> girl
+              Angela -> girl
+          Andrew -> boy
+                Andrea -> girl
+              Amy -> girl
+                Amber -> girl
+            Amanda -> girl
+                Alice -> girl
+                  Alexis -> girl
+              Alexander -> boy
+                    Albert -> boy
+                      Alan -> boy
+                  Adam -> boy
+                    Abigail -> girl
+                Aaron -> boy
+TM> preorder
+Mary girl
+  James boy
+    Elizabeth girl
+      Barbara girl
+        Anthony boy
+          Andrew boy
+            Amanda girl
+              Alexander boy
+                Aaron boy
+                  Adam boy
+                    Abigail girl
+                    Albert boy
+                      Alan boy
+                Alice girl
+                  Alexis girl
+              Amy girl
+                Amber girl
+                Andrea girl
+            Anna girl
+              Angela girl
+                Ann girl
+          Ashley girl
+            Arthur boy
+            Austin boy
+        David boy
+          Charles boy
+            Betty girl
+              Benjamin boy
+              Carol girl
+                Brian boy
+                  Brenda girl
+                    Brandon boy
+                      Billy boy
+                        Beverly girl
+                        Bobby boy
+                  Carl boy
+                    Bryan boy
+                      Bruce boy
+                        Brittany girl
+                Catherine girl
+                  Carolyn girl
+            Christopher boy
+              Christine girl
+                Christina girl
+                  Cheryl girl
+                    Christian boy
+              Daniel boy
+                Cynthia girl
+                Danielle girl
+          Dorothy girl
+            Donald boy
+              Deborah girl
+                Debra girl
+                  Dennis boy
+                    Denise girl
+                    Diane girl
+                      Diana girl
+              Donna girl
+                Doris girl
+            Edward boy
+              Douglas boy
+                Dylan boy
+      George boy
+        Emily girl
+          Gary boy
+            Eric boy
+              Emma girl
+              Frank boy
+                Evelyn girl
+                  Ethan boy
+                    Eugene boy
+                  Frances girl
+                Gabriel boy
+        Helen girl
+          Gregory boy
+            Gerald boy
+              Gloria girl
+                Grace girl
+            Heather girl
+              Harold boy
+                Hannah girl
+                Harry boy
+          Jacob boy
+            Jack boy
+              Henry boy
+            Jacqueline girl
+    John boy
+      Jennifer girl
+        Jason boy
+          Janet girl
+            Jane girl
+            Janice girl
+          Jeffrey boy
+            Jean girl
+        Jessica girl
+          Jerry boy
+            Jeremy boy
+            Jesse boy
+          Joan girl
+            Joe boy
+      Linda girl
+        Joseph boy
+          Jonathan boy
+            Johnny boy
+            Jose boy
+              Jordan boy
+          Karen girl
+            Joshua boy
+              Justin boy
+                Julie girl
+                  Joyce girl
+                    Judith girl
+                      Juan boy
+                      Julia girl
+                        Judy girl
+            Kimberly girl
+              Kenneth boy
+                Kathleen girl
+                  Katherine girl
+                  Kelly girl
+                    Keith boy
+                      Kathryn girl
+                        Kayla girl
+                Kevin boy
+              Laura girl
+                Larry boy
+                  Kyle boy
+                Lauren girl
+                  Lawrence boy
+        Margaret girl
+          Lisa girl
+            Madison girl
+              Louis boy
+                Lori girl
+                  Logan boy
+          Mark boy
+            Maria girl
+              Marie girl
+                Marilyn girl
+            Martha girl
+  Patricia girl
+    Michael boy
+      Matthew boy
+        Melissa girl
+          Megan girl
+      Nancy girl
+        Michelle girl
+        Nicholas boy
+          Nathan boy
+            Natalie girl
+          Pamela girl
+            Nicole girl
+              Olivia girl
+                Noah boy
+    Robert boy
+      Richard boy
+        Paul boy
+          Patrick boy
+          Rebecca girl
+            Raymond boy
+              Rachel girl
+                Peter boy
+                  Philip boy
+                Ralph boy
+                  Randy boy
+      William boy
+        Susan girl
+          Sarah girl
+            Sandra girl
+              Ronald boy
+                Roger boy
+                Ryan boy
+                  Ruth girl
+                    Roy boy
+                      Rose girl
+                      Russell boy
+                  Samantha girl
+                    Samuel boy
+              Sara girl
+            Steven boy
+              Stephanie girl
+                Sharon girl
+                  Scott boy
+                    Sean boy
+                  Shirley girl
+                Stephen boy
+          Thomas boy
+            Terry boy
+              Teresa girl
+              Theresa girl
+            Timothy boy
+              Tiffany girl
+              Virginia girl
+                Tyler boy
+                  Victoria girl
+                    Vincent boy
+                Walter boy
+                  Wayne boy
+        Zachary boy
+          Willie boy
+TM> quit

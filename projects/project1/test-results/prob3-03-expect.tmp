@@ -1,0 +1,22 @@
+TreeMap Editor
+Commands:
+  quit:            exit the program
+  print:           shows contents of the tree in reverse sorted order
+  add <key> <val>: inserts the given key/val into the tree, duplicate keys are ignored
+  get <key>:       prints FOUND if the name is in the tree, NOT FOUND otherwise
+  clear:           eliminates all key/vals from the tree
+  preorder:        prints contents of the tree in pre-order which is how it will be saved
+  save <file>:     writes the contents of the tree in pre-order to the given file
+  load <file>:     clears the current tree and loads the one in the given file
+TM> add Grape fruit
+TM> print
+Grape -> fruit
+TM> get Grape
+FOUND: fruit
+TM> get Apple
+NOT FOUND
+TM> get Carrot
+NOT FOUND
+TM> get Peach
+NOT FOUND
+TM> quit

@@ -1,0 +1,39 @@
+.text section
+- 13 section index
+- 4160 bytes offset from start of file
+- 0x1040 preferred virtual address for .text
+.symtab section
+- 26 section index
+- 12504 bytes offset from start of file
+- 1680 bytes total size
+- 24 bytes per entry
+- 70 entries
+Found Function 'main'
+- 65 symbol index
+- 0x1139 value
+- 173 size
+- 13 section index
+- 249 offset in .text of start of function
+Bytes of function 'main'
+   0: 55 48 89 e5 48 83 ec 10 
+   8: 89 7d fc 48 89 75 f0 48 
+  10: 8d 35 f1 2e 00 00 48 8d 
+  18: 3d ae 0e 00 00 b8 00 00 
+  20: 00 00 e8 d0 fe ff ff 48 
+  28: 8d 35 f9 2e 00 00 48 8d 
+  30: 3d a3 0e 00 00 b8 00 00 
+  38: 00 00 e8 b8 fe ff ff 48 
+  40: 8d 35 21 2f 00 00 48 8d 
+  48: 3d 98 0e 00 00 b8 00 00 
+  50: 00 00 e8 a0 fe ff ff 8b 
+  58: 05 1a 2f 00 00 89 c6 48 
+  60: 8d 3d 8c 0e 00 00 b8 00 
+  68: 00 00 00 e8 87 fe ff ff 
+  70: 8b 05 05 2f 00 00 89 c6 
+  78: 48 8d 3d 7d 0e 00 00 b8 
+  80: 00 00 00 00 e8 6e fe ff 
+  88: ff 48 8b 05 ef 2e 00 00 
+  90: 66 48 0f 6e c0 48 8d 3d 
+  98: 6a 0e 00 00 b8 01 00 00 
+  a0: 00 e8 51 fe ff ff b8 00 
+  a8: 00 00 00 c9 c3 

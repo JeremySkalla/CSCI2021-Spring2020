@@ -1,0 +1,10 @@
+Reading ints using function 'read_text_deltas()'
+Returned pointer was NOT null
+Read 5 ints:
+[ 0] : 1
+[ 1] : 2
+[ 2] : 3
+[ 3] : 4
+[ 4] : 5
+free()'ing memory for deltas
+Done

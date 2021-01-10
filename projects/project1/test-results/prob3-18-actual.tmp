@@ -1,0 +1,81 @@
+TreeMap Editor
+Commands:
+  quit:            exit the program
+  print:           shows contents of the tree in reverse sorted order
+  add <key> <val>: inserts the given key/val into the tree, duplicate keys are ignored
+  get <key>:       prints FOUND if the name is in the tree, NOT FOUND otherwise
+  clear:           eliminates all key/vals from the tree
+  preorder:        prints contents of the tree in pre-order which is how it will be saved
+  save <file>:     writes the contents of the tree in pre-order to the given file
+  load <file>:     clears the current tree and loads the one in the given file
+TM> add El strange
+TM> add Mike stoic
+TM> print
+  Mike -> stoic
+El -> strange
+TM> add Dustin corny
+TM> add Lucas brash
+TM> print
+  Mike -> stoic
+    Lucas -> brash
+El -> strange
+  Dustin -> corny
+TM> add Will lost
+TM> add Steve hairy
+TM> print
+    Will -> lost
+      Steve -> hairy
+  Mike -> stoic
+    Lucas -> brash
+El -> strange
+  Dustin -> corny
+TM> get Dustin
+FOUND: corny
+TM> get Steve
+FOUND: hairy
+TM> get Mike
+FOUND: stoic
+TM> get Barb
+NOT FOUND
+TM> get Hopper
+NOT FOUND
+TM> save test-results/stranger.tm
+TM> clear
+TM> print
+TM> load test-results/stranger.tm
+TM> print
+    Will -> lost
+      Steve -> hairy
+  Mike -> stoic
+    Lucas -> brash
+El -> strange
+  Dustin -> corny
+TM> add El hairy
+modified existing key
+TM> add Will found
+modified existing key
+TM> add Barb away
+TM> print
+    Will -> found
+      Steve -> hairy
+  Mike -> stoic
+    Lucas -> brash
+El -> hairy
+  Dustin -> corny
+    Barb -> away
+TM> load test-results/stranger.tm
+TM> print
+    Will -> lost
+      Steve -> hairy
+  Mike -> stoic
+    Lucas -> brash
+El -> strange
+  Dustin -> corny
+TM> preorder
+El strange
+  Dustin corny
+  Mike stoic
+    Lucas brash
+    Will lost
+      Steve hairy
+TM> quit

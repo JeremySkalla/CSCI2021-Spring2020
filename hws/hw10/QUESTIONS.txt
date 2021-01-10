@@ -1,0 +1,124 @@
+                           _________________
+
+                            HW 10 QUESTIONS
+                           _________________
+
+
+- Name: Jeremy Skalla
+- NetID: skall034
+
+Write your answers to the questions below directly in this text file.
+Submit the whole text file while taking the associated quiz.
+
+
+Run Code on atlas
+=================
+
+  To ensure that you get the expected performance, run your code on
+  `atlas.cselabs.umn.edu'.  Use SSH or a similar tool to access `atlas'.
+
+
+PROBLEM 1: Code Overview
+========================
+
+(A) Vector and Matrix
+~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the header file `matvec.h' which gives type definitions and
+  declares functions associated with a simple matrix and vector type.
+
+  For the matrix type `matrix_t' with R rows and C columns, how is a 2D
+  matrix actually laid out in memory?
+  It is laid out as a long called rows, a long called cols, and an int pointer called data
+
+
+(B) Getting and Setting Elements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  For the `matrix_t' and `vector_t' types, convenient means to get and
+  set elements is provided. This mechanism is used in the utility
+  functions in `matvec_util.c' and defined in `matvec.h'.
+
+  Describe how one would get element (R,C) of `matrix_t' or set it to
+  value Z.  Why are these mechanisms not functions?
+
+  They're macros, so you'd use MGET(matrix_t, R, C) or MSET(matrix_t, R, C, Z).
+  Macros are done by preprocessors, so they're more optimized than function calls
+  but they're apparenlty pretty buggy, so normally functions are used for the minimal
+  time lost.
+
+
+
+PROBLEM 2: Timing Rows vs Columns
+=================================
+
+(A) row_sums vs col_sums Timing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Compile and run the `matsums_main' executable using the provided
+  `Makefile' (typing `make' should suffice).
+
+  Run the code on `atlas.cselabs.umn.edu' to ensure you get the expected
+  performance experience.
+
+  Run this program with differing parameters which control the number of
+  rows and columns in the matrix which is summed. Show some example runs
+  with different parameters including on large square matrix with 8000
+  rows and 8000 columns.
+
+  Note any speed differences between the two on large matrices.
+
+  If I run with the rows being larger and the columns being smaller (say, rows = 8000,
+  columns = 1000) instead of (rows = 1000 and columns = 8000), the rows being larger than
+  the columns runs about twice as fast as vice versa
+
+  col_sums is much slower than row_sums
+
+
+(B) row_sums vs col_sums speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Examine the source code for the functions `row_sums()' and
+  `col_sums()' in the file `matsums_funcs.c'.  Describe why the
+  timing/speed differences you observed previously are occurring based
+  on features of the source code you see and the layout of the
+  `matrix_t' that is being summed.
+
+  on col_sums, col_sums is iterating through the columns first rather than the rows,
+  even though c is a row-major language
+
+
+PROBLEM 3: opt_col_sums()
+=========================
+
+  Complete the function `opt_col_sums()' in file `matsums_funcs.c'. This
+  function should have identical behavior to `col_sums()' (it sums the
+  columns of the matrix into a provided array). However, it should be
+  *optimized* so that it achieves performance near to that of the
+  `row_sums()' function. To achieve this, re-arrange the loops to
+  iterate as efficiently as possible with respect to the memory
+  system. Feel free to ask course staff for hints on how to do this or
+  do some online research.
+
+  To time `opt_col_sums()', uncomment relevant blocks in the
+  `matsums_main.c' program that are provided for it.
+
+  Paste your source code and a copy of the timing results of running
+  `matsums_main' on an 8000 by 8000 matrix.
+
+  int opt_col_sums(matrix_t mat, vector_t csums){
+      if(mat.cols != csums.len){
+        printf("size mismatch: mat.cols %ld != csums.len %ld\n",
+               mat.cols,csums.len);
+        return 1;
+      }
+
+      for(int i=0; j<mat.rows; j++){
+        int sum=0;
+        for(int j=0; i<mat.cols; i++){
+          sum += MGET(mat,i,j);
+        }
+        VSET(csums,j,sum);
+      }
+      return 0;
+  }

@@ -1,0 +1,16 @@
+==237== Memcheck, a memory error detector
+==237== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==237== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==237== Command: ./loadfunc test-input/globals main
+==237== Parent PID: 236
+==237== 
+==237== error calling PR_SET_PTRACER, vgdb might block
+==237== 
+==237== HEAP SUMMARY:
+==237==     in use at exit: 0 bytes in 0 blocks
+==237==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==237== 
+==237== All heap blocks were freed -- no leaks are possible
+==237== 
+==237== For counts of detected and suppressed errors, rerun with: -v
+==237== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

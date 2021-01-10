@@ -1,0 +1,20 @@
+.text section
+- 1 section index
+- 64 bytes offset from start of file
+- 0x0 preferred virtual address for .text
+.symtab section
+- 17 section index
+- 1536 bytes offset from start of file
+- 432 bytes total size
+- 24 bytes per entry
+- 18 entries
+Found Function 'print_greeting'
+- 15 symbol index
+- 0x0 value
+- 19 size
+- 1 section index
+- 0 offset in .text of start of function
+Bytes of function 'print_greeting'
+   0: 55 48 89 e5 48 8d 3d 00 
+   8: 00 00 00 e8 00 00 00 00 
+  10: 90 5d c3 

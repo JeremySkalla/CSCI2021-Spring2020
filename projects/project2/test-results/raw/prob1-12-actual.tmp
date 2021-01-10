@@ -1,0 +1,17 @@
+{
+    // Tests whether clock_update() correctly changes
+    // CLOCK_DISPLAY_PORT to target bits based on
+    // TIME_OF_DAY_SEC
+    TIME_OF_DAY_SEC  =   43199;
+    CLOCK_DISPLAY_PORT = -1;
+
+    int ret = clock_update();   // updates DISPLAY
+
+    printf("returned: %d\n",ret);
+    printf("TIME_OF_DAY_SEC: %d\n",TIME_OF_DAY_SEC);
+    printf("CLOCK_DISPLAY_PORT: ");
+    showbits(CLOCK_DISPLAY_PORT); printf("\n");
+}
+returned: 0
+TIME_OF_DAY_SEC: 43199
+CLOCK_DISPLAY_PORT: 00010000 11000001 10110110 11101111 

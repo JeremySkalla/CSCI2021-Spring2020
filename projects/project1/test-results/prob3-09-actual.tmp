@@ -1,0 +1,48 @@
+TreeMap Editor
+Commands:
+  quit:            exit the program
+  print:           shows contents of the tree in reverse sorted order
+  add <key> <val>: inserts the given key/val into the tree, duplicate keys are ignored
+  get <key>:       prints FOUND if the name is in the tree, NOT FOUND otherwise
+  clear:           eliminates all key/vals from the tree
+  preorder:        prints contents of the tree in pre-order which is how it will be saved
+  save <file>:     writes the contents of the tree in pre-order to the given file
+  load <file>:     clears the current tree and loads the one in the given file
+TM> add Kenny alive
+TM> add Kenny dead
+modified existing key
+TM> print
+Kenny -> dead
+TM> add Cartman fat
+TM> print
+Kenny -> dead
+  Cartman -> fat
+TM> add Cartman beefcake
+modified existing key
+TM> print
+Kenny -> dead
+  Cartman -> beefcake
+TM> add Kyle alive
+TM> add Stan alive
+TM> add Kyle lonely
+modified existing key
+TM> print
+    Stan -> alive
+  Kyle -> lonely
+Kenny -> dead
+  Cartman -> beefcake
+TM> add Kenny zombie
+modified existing key
+TM> print
+    Stan -> alive
+  Kyle -> lonely
+Kenny -> zombie
+  Cartman -> beefcake
+TM> add Kyle irate
+modified existing key
+TM> print
+    Stan -> alive
+  Kyle -> irate
+Kenny -> zombie
+  Cartman -> beefcake
+TM> quit
