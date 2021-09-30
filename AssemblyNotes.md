@@ -86,5 +86,3 @@ NOTE: Base Ptr might not exist, optimized out by compiler a lot of times
 | (%rax, %rbx)      | Indexed       | *(rax+rbx)            |
 | (%rax, %rbx, 4)   | Scaled index  | *rax[rbx] (size of 4) |
 | 1024              | Absolute      | ... (Address #1024)   |
-
-blah
